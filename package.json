@@ -1,0 +1,60 @@
+{
+  "name": "bree-desktop",
+  "description": "Bree Desktop Application",
+  "version": "0.0.0",
+  "author": "Taylor Schley <taylorschley@me.com> (https://github.com/shadowgate15)",
+  "bugs": {
+    "url": "https://github.com/breejs/bree-desktop/issues",
+    "email": "taylorschley@me.com"
+  },
+  "contributors": [
+    "Taylor Schley <taylorschley@me.com> (https://github.com/shadowgate15)"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@commitlint/cli": "latest",
+    "@commitlint/config-conventional": "latest",
+    "ava": "latest",
+    "codecov": "latest",
+    "cross-env": "latest",
+    "eslint": "latest",
+    "eslint-config-xo-lass": "latest",
+    "fixpack": "latest",
+    "husky": "latest",
+    "lint-staged": "latest",
+    "nyc": "latest",
+    "remark-cli": "latest",
+    "remark-preset-github": "latest",
+    "xo": "latest"
+  },
+  "engines": {
+    "node": ">= 10"
+  },
+  "homepage": "https://github.com/breejs/bree-desktop",
+  "keywords": [
+    "bree-desktop",
+    "lass"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/breejs/bree-desktop"
+  },
+  "scripts": {
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "lint": "yarn run lint:js && yarn run lint:md",
+    "lint:js": "xo",
+    "lint:md": "remark . -qfo",
+    "pretest": "yarn run lint",
+    "test": "cross-env NODE_ENV=test ava",
+    "test-coverage": "cross-env NODE_ENV=test nyc yarn run test"
+  },
+  "xo": {
+    "prettier": true,
+    "space": true,
+    "extends": [
+      "xo-lass"
+    ]
+  }
+}
