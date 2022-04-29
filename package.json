@@ -10,25 +10,30 @@
   "contributors": [
     "Taylor Schley <taylorschley@me.com> (https://github.com/shadowgate15)"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "pinia": "^2.0.13",
+    "vue": "^3.2.33",
+    "vue-router": "^4.0.14"
+  },
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
+    "@vitejs/plugin-vue": "^2.3.1",
+    "@vue/eslint-config-prettier": "^7.0.0",
     "ava": "latest",
     "codecov": "latest",
     "cross-env": "latest",
     "eslint": "latest",
     "eslint-config-xo-lass": "latest",
+    "eslint-plugin-vue": "^8.2.0",
     "fixpack": "latest",
     "husky": "latest",
     "lint-staged": "latest",
     "nyc": "latest",
     "remark-cli": "latest",
     "remark-preset-github": "latest",
+    "vite": "^2.9.5",
     "xo": "latest"
-  },
-  "engines": {
-    "node": ">= 10"
   },
   "homepage": "https://github.com/breejs/bree-desktop",
   "keywords": [
@@ -36,17 +41,21 @@
     "lass"
   ],
   "license": "MIT",
-  "main": "index.js",
+  "main": "src/main.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/breejs/bree-desktop"
   },
   "scripts": {
+    "build": "vite build",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "dev": "vite",
     "lint": "yarn run lint:js && yarn run lint:md",
     "lint:js": "xo",
     "lint:md": "remark . -qfo",
+    "prepare": "husky install",
     "pretest": "yarn run lint",
+    "preview": "vite preview --port 5050",
     "test": "cross-env NODE_ENV=test ava",
     "test-coverage": "cross-env NODE_ENV=test nyc yarn run test"
   },
@@ -54,7 +63,21 @@
     "prettier": true,
     "space": true,
     "extends": [
-      "xo-lass"
-    ]
+      "xo-lass",
+      "plugin:vue/vue3-essential",
+      "@vue/eslint-config-prettier"
+    ],
+    "envs": [
+      "vue/setup-compiler-macros"
+    ],
+    "extensions": [
+      "js",
+      "cjs",
+      "mjs",
+      "vue"
+    ],
+    "rules": {
+      "node/file-extension-in-import": "off"
+    }
   }
 }
