@@ -4,6 +4,7 @@ import HelloWorld from '@/components/hello-world.vue';
 </script>
 
 <template>
+<!--
   <header>
     <img
       alt="Vue logo"
@@ -24,9 +25,16 @@ import HelloWorld from '@/components/hello-world.vue';
   </header>
 
   <RouterView />
+  -->
+  <img
+    alt="Bree logo"
+    class="img-fluid"
+    src="@/assets/bree.png"
+  />
 </template>
 
 <style>
+@import 'bootstrap/dist/css/bootstrap.min.css';
 @import '@/assets/base.css';
 
 #app {
@@ -40,11 +48,6 @@ import HelloWorld from '@/components/hello-world.vue';
 header {
   line-height: 1.5;
   max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
 }
 
 a,

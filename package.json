@@ -11,6 +11,9 @@
     "Taylor Schley <taylorschley@me.com> (https://github.com/shadowgate15)"
   ],
   "dependencies": {
+    "@popperjs/core": "^2.11.5",
+    "@tauri-apps/api": "^1.0.0-rc.4",
+    "bootstrap": "^5.1.3",
     "pinia": "^2.0.13",
     "vue": "^3.2.33",
     "vue-router": "^4.0.14"
@@ -18,6 +21,7 @@
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
+    "@tauri-apps/cli": "^1.0.0-rc.9",
     "@vitejs/plugin-vue": "^2.3.1",
     "@vue/eslint-config-prettier": "^7.0.0",
     "ava": "latest",
@@ -56,6 +60,7 @@
     "prepare": "husky install",
     "pretest": "yarn run lint",
     "preview": "vite preview --port 5050",
+    "start:dev": "tauri dev",
     "test": "cross-env NODE_ENV=test ava",
     "test-coverage": "cross-env NODE_ENV=test nyc yarn run test"
   },
