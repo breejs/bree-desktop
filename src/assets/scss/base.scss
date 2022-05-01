@@ -1,0 +1,14 @@
+/**
+  * bootstrap w/ dark mode
+  * https://github.com/vinorodrigues/bootstrap-dark-5
+  * if we want to modify default variables
+  * we will need to fork and build ourselves
+  */
+@import '../../../node_modules/bootstrap-dark-5/dist/css/bootstrap-dark.min.css';
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
