@@ -11,6 +11,7 @@ module.exports = {
   ],
   envs: ['vue/setup-compiler-macros'],
   extensions: ['js', 'cjs', 'mjs', 'vue'],
+  ignores: ['dist*/**'],
   parserOptions: {
     sourceType: 'module'
   },
@@ -52,6 +53,12 @@ module.exports = {
       'files': '**/*.vue',
       rules: {
         'no-unused-vars': 'off',
+      }
+    },
+    { 
+      'files': 'src-node/jobs/**/*.js',
+      rules: {
+        'unicorn/no-process-exit': 'off'
       }
     }
   ]

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bree Desktop</title>
+  </head>
+  <body>
+    <script>
+      var source = new EventSource('http://localhost:3001/v1/events');
+
+      source.addEventListener('message', (e) => {
+        console.log('message', e);
+      });
+      source.addEventListener('worker created', (e) => {
+        console.log('worker created', e);
+      });
+      source.addEventListener('worker deleted', (e) => {
+        console.log('worker deleted', e);
+      });
+      source.addEventListener('open', () => {
+        console.warn('source opened');
+      });
+      source.addEventListener('error', (e) => {
+        console.error(e);
+      });
+    </script>
+  </body>
+</html>

@@ -22,3 +22,6 @@ coverage
 #      Files      #
 ###################
 *.log
+dist
+dist-node
+src-nodes/binaries

@@ -7,7 +7,7 @@
     "distDir": "../dist",
     "devPath": "http://localhost:3000",
     "beforeDevCommand": "yarn dev",
-    "beforeBuildCommand": "yarn build"
+    "beforeBuildCommand": ""
   },
   "tauri": {
     "bundle": {
@@ -22,7 +22,7 @@
         "icons/icon.ico"
       ],
       "resources": [],
-      "externalBin": [],
+      "externalBin": ["binaries/node"],
       "copyright": "",
       "category": "DeveloperTool",
       "shortDescription": "",
@@ -47,7 +47,17 @@
       "active": false
     },
     "allowlist": {
-      "all": true
+      "all": true,
+      "shell": {
+        "sidecar": true,
+        "scope": [
+          {
+            "name": "binaries/node",
+            "sidecar": true,
+            "cmd": ""
+          }
+        ]
+      }
     },
     "windows": [
       {
