@@ -1292,6 +1292,11 @@ bootstrap-dark-5@^1.1.3:
   dependencies:
     bootstrap "^5.1.3"
 
+bootstrap-icons@^1.8.1:
+  version "1.8.1"
+  resolved "https://registry.npmjs.org/bootstrap-icons/-/bootstrap-icons-1.8.1.tgz#773c1625bcbf3e86090ea9da4386c2c6459c5582"
+  integrity sha512-IXUqislddPJfwq6H+2nTkHyr9epO9h6u1AG0OZCx616w+TgzeoCjfmI3qJMQqt1J586gN2IxzB4M99Ip4sTZ1w==
+
 bootstrap@^5.1.3:
   version "5.1.3"
   resolved "https://registry.npmjs.org/bootstrap/-/bootstrap-5.1.3.tgz#ba081b0c130f810fa70900acbc1c6d3c28fa8f34"
@@ -7434,7 +7439,7 @@ stubs@^3.0.0:
   resolved "https://registry.npmjs.org/stubs/-/stubs-3.0.0.tgz#e8d2ba1fa9c90570303c030b6900f7d5f89abe5b"
   integrity sha1-6NK6H6nJBXAwPAMLaQD31fiavls=
 
-superagent@^7.0.2:
+superagent@^7.0.2, superagent@^7.1.3:
   version "7.1.3"
   resolved "https://registry.npmjs.org/superagent/-/superagent-7.1.3.tgz#783ff8330e7c2dad6ad8f0095edc772999273b6b"
   integrity sha512-WA6et4nAvgBCS73lJvv1D0ssI5uk5Gh+TGN/kNe+B608EtcVs/yzfl+OLXTzDs7tOBDIpvgh/WUs1K2OK1zTeQ==

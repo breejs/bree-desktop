@@ -24,4 +24,4 @@ coverage
 *.log
 dist
 dist-node
-src-nodes/binaries
+src-nodes/binaries/

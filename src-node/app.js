@@ -31,15 +31,15 @@ app.use(cabin.middleware);
 // cors
 app.use(cors());
 
+// routes
+app.use(router.routes());
+
 // setup sse
 app.use(
   sse({
     maxClients: 10
   })
 );
-
-// routes
-app.use(router.routes());
 
 // setup bree events
 app.use(breeEvents);
