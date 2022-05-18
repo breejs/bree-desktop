@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 
 const props = defineProps({
-  state: {
+  status: {
     validator(value) {
       return ['running', 'waiting', 'stopped', 'error'].includes(value);
     },
@@ -18,7 +18,7 @@ const STATE_TO_COLOR = new Map([
 ]);
 
 const classObject = computed(() => {
-  return `text-${STATE_TO_COLOR.get(props.state)}`;
+  return `text-${STATE_TO_COLOR.get(props.status)}`;
 });
 </script>
 

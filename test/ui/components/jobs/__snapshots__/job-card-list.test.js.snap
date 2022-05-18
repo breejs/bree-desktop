@@ -1,0 +1,76 @@
+// Vitest Snapshot v1
+
+exports[`story snapshots > Jobs 1`] = `
+"<div class=\\"card w-100 mb-3\\">
+  <div class=\\"card-body d-flex flex-row\\">
+    <div class=\\"status me-3 d-flex align-items-center\\"><i class=\\"bi bi-circle-fill text-info\\"></i></div>
+    <div class=\\"info d-flex flex-column align-self-center\\">
+      <div class=\\"row\\">
+        <h4>Waiting Job</h4>
+      </div>
+      <div class=\\"row\\">
+        <p class=\\"text-muted\\">Last run: 4/4/2022, 12:00:00 PM</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class=\\"card w-100 mb-3\\">
+  <div class=\\"card-body d-flex flex-row\\">
+    <div class=\\"status me-3 d-flex align-items-center\\"><i class=\\"bi bi-circle-fill text-warning\\"></i></div>
+    <div class=\\"info d-flex flex-column align-self-center\\">
+      <div class=\\"row\\">
+        <h4>Stopped Job</h4>
+      </div>
+      <div class=\\"row\\">
+        <p class=\\"text-muted\\">Last run: 4/4/2022, 5:00:00 AM</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class=\\"card w-100 mb-3\\">
+  <div class=\\"card-body d-flex flex-row\\">
+    <div class=\\"status me-3 d-flex align-items-center\\"><i class=\\"bi bi-circle-fill text-danger\\"></i></div>
+    <div class=\\"info d-flex flex-column align-self-center\\">
+      <div class=\\"row\\">
+        <h4>Errored Job</h4>
+      </div>
+      <div class=\\"row\\">
+        <p class=\\"text-muted\\">Last run: never</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class=\\"card w-100 mb-3\\">
+  <div class=\\"card-body d-flex flex-row\\">
+    <div class=\\"status me-3 d-flex align-items-center\\"><i class=\\"bi bi-circle-fill text-success\\"></i></div>
+    <div class=\\"info d-flex flex-column align-self-center\\">
+      <div class=\\"row\\">
+        <h4>Running Job</h4>
+      </div>
+      <div class=\\"row\\">
+        <p class=\\"text-muted\\">Last run: 4/4/2022, 8:00:00 AM</p>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`story snapshots > NoJobs 1`] = `"<p>No jobs to show</p>"`;
+
+exports[`story snapshots > WithLastRun 1`] = `
+"<div class=\\"row\\">
+  <h4>Job Name</h4>
+</div>
+<div class=\\"row\\">
+  <p class=\\"text-muted\\">Last run: 4/4/2022, 12:00:00 PM</p>
+</div>"
+`;
+
+exports[`story snapshots > WithNoLastRun 1`] = `
+"<div class=\\"row\\">
+  <h4>Job Name</h4>
+</div>
+<div class=\\"row\\">
+  <p class=\\"text-muted\\">Last run: never</p>
+</div>"
+`;

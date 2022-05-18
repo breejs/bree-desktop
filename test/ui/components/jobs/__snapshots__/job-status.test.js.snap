@@ -1,0 +1,11 @@
+// Vitest Snapshot v1
+
+exports[`story snapshots > Default 1`] = `"<i class=\\"bi bi-circle-fill text-danger\\"></i>"`;
+
+exports[`story snapshots > Error 1`] = `"<i class=\\"bi bi-circle-fill text-danger\\"></i>"`;
+
+exports[`story snapshots > Running 1`] = `"<i class=\\"bi bi-circle-fill text-success\\"></i>"`;
+
+exports[`story snapshots > Stopped 1`] = `"<i class=\\"bi bi-circle-fill text-warning\\"></i>"`;
+
+exports[`story snapshots > Waiting 1`] = `"<i class=\\"bi bi-circle-fill text-info\\"></i>"`;

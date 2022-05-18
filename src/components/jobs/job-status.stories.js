@@ -1,29 +1,29 @@
-import BaseJobStatus from './base-job-status.vue';
+import JobStatus from './job-status.vue';
 
 const config = {
-  component: BaseJobStatus
+  component: JobStatus
 };
 export default config;
 
 const Template = (args) => ({
-  components: { BaseJobStatus },
+  components: { JobStatus },
   setup() {
     return { args };
   },
-  template: '<BaseJobStatus v-bind="args" />'
+  template: '<JobStatus v-bind="args" />'
 });
 
 export const Default = Template.bind({});
 Default.args = {};
 
 export const Running = Template.bind({});
-Running.args = { state: 'running' };
+Running.args = { status: 'running' };
 
 export const Waiting = Template.bind({});
-Waiting.args = { state: 'waiting' };
+Waiting.args = { status: 'waiting' };
 
 export const Stopped = Template.bind({});
-Stopped.args = { state: 'stopped' };
+Stopped.args = { status: 'stopped' };
 
 export const Error = Template.bind({});
-Error.args = { state: 'error' };
+Error.args = { status: 'error' };

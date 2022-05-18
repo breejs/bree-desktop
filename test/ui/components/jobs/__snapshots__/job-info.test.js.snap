@@ -1,0 +1,19 @@
+// Vitest Snapshot v1
+
+exports[`story snapshots > WithLastRun 1`] = `
+"<div class=\\"row\\">
+  <h4>Job Name</h4>
+</div>
+<div class=\\"row\\">
+  <p class=\\"text-muted\\">Last run: 4/4/2022, 12:00:00 PM</p>
+</div>"
+`;
+
+exports[`story snapshots > WithNoLastRun 1`] = `
+"<div class=\\"row\\">
+  <h4>Job Name</h4>
+</div>
+<div class=\\"row\\">
+  <p class=\\"text-muted\\">Last run: never</p>
+</div>"
+`;
