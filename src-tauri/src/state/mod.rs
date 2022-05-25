@@ -32,7 +32,6 @@ impl State {
 
     let notice = {
       let window = self.window.lock();
-      log::info!("window: {:#?}", window.clone());
       Notice::from(window.clone())
     };
 
