@@ -1,5 +1,6 @@
 <script setup>
 import { RouterView } from 'vue-router';
+
 import TheSideNav from './components/the-side-nav.vue';
 </script>
 
@@ -7,7 +8,7 @@ import TheSideNav from './components/the-side-nav.vue';
 main
   TheSideNav
 
-  .p-3.mb-auto
+  .p-3.mb-auto.w-100
     RouterView
 </template>
 
@@ -15,7 +16,7 @@ main
 @import '@/assets/scss/base.scss';
 
 #app {
-  max-width: 1280px;
+  max-width: 1920px;
   margin: 0 auto;
 
   font-weight: normal;

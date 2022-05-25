@@ -1,6 +1,6 @@
-import bree from '../bree';
-
 function get(ctx) {
+  const { bree } = ctx;
+
   ctx.body = bree.config;
 }
 

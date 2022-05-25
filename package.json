@@ -98,6 +98,8 @@
     "preview": "vite preview --port 5050",
     "start:dev": "tauri dev",
     "storybook": "start-storybook -p 6006",
-    "test": "vitest"
+    "test": "yarn run test:ui && yarn run test:bree",
+    "test:bree": "vitest -c vitest-bree.config.js",
+    "test:ui": "vitest"
   }
 }

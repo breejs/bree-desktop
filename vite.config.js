@@ -13,6 +13,7 @@ export default defineConfig({
     }
   },
   test: {
+    include: ['test/ui/**/*.{js,mjs,cjs}'],
     environment: 'happy-dom'
   }
 });

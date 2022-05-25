@@ -1,6 +1,6 @@
-import bree from '../bree';
-
 export function breeEvents(ctx) {
+  const { bree } = ctx;
+
   if (ctx.sse && ctx.url === '/events') {
     for (const event of ['worker created', 'worker deleted']) {
       // listen to events from bree

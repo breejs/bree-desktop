@@ -4,18 +4,18 @@ require('source-map-support').install();
 import Graceful from '@ladjs/graceful';
 
 import bree from './bree';
-import app from './app';
+import messenger from './messenger';
 
 const graceful = new Graceful({
   brees: [bree],
-  servers: [app]
+  customHandlers: [messenger.stop]
 });
 graceful.listen();
 
+messenger.start();
+
+messenger.log('Messenger started');
+
 bree.start();
 
-console.log('Bree started');
-
-app.listen(3001);
-
-console.log('Api started');
+messenger.log('Bree started');
