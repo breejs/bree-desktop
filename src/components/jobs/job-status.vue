@@ -12,7 +12,7 @@ const props = defineProps({
 
 const STATE_TO_COLOR = new Map([
   ['running', 'success'],
-  ['waiting', 'info'],
+  ['waiting', 'light'],
   ['stopped', 'warning'],
   ['error', 'danger']
 ]);

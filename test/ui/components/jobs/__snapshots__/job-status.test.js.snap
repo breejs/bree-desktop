@@ -8,4 +8,4 @@ exports[`story snapshots > Running 1`] = `"<i class=\\"bi bi-circle-fill text-su
 
 exports[`story snapshots > Stopped 1`] = `"<i class=\\"bi bi-circle-fill text-warning\\"></i>"`;
 
-exports[`story snapshots > Waiting 1`] = `"<i class=\\"bi bi-circle-fill text-info\\"></i>"`;
+exports[`story snapshots > Waiting 1`] = `"<i class=\\"bi bi-circle-fill text-light\\"></i>"`;
