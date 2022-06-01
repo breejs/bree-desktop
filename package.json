@@ -79,6 +79,7 @@
     "build:package": "yarn package",
     "build:vue": "vite build",
     "coverage": "viteset run --coverage",
+    "coverage:bree": "vitest run --coverage -c vitest-bree.config.js",
     "dev": "cross-env NODE_ENV=development concurrently -p \"[{time} {name}]\" -c cyan,magenta \"yarn run dev:*\"",
     "dev:package": "yarn package",
     "dev:vue": "vite",

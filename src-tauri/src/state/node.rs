@@ -10,23 +10,6 @@ pub struct Message {
   pub data: Value,
 }
 
-fn handle_bree_stdout_events(line: String) {
-  // log::info!("[bree]: {}", line);
-  // parse json line
-  let v: Message = serde_json::from_str(&line).expect(
-    format!(
-      "Messages must be in JSON format. This is what was received: '{}'.",
-      line
-    )
-    .as_str(),
-  );
-
-  if v.event.eq("log") {
-    log::info!("[bree]: {}", v.data);
-  } else {
-  }
-}
-
 #[derive(Debug)]
 pub struct Node {
   sidecar: Option<CommandChild>,

@@ -1,5 +1,10 @@
 import { defineStore } from 'pinia';
 
+export const EVENTS_TO_ACTIONS = new Map([
+  ['worker-created', 'onWorkerCreated'],
+  ['worker-deleted', 'onWorkerDeleted']
+]);
+
 export const useBreeStore = defineStore({
   id: 'bree',
   state: () => ({ jobs: [{ name: 'basic' }] }),
@@ -9,25 +14,17 @@ export const useBreeStore = defineStore({
     }
   },
   actions: {
-    processEvent(event, data) {
-      const { name } = data;
-      const jobIndex = this.jobs.findIndex((j) => j.name === name);
+    onWorkerCreated(data) {
+      const jobIndex = this.jobs.findIndex((j) => j.name === data.name);
       const job = this.jobs[jobIndex];
 
-      if (job) {
-        switch (event) {
-          case 'worker-created':
-            job.status = 'running';
-            break;
-          case 'worker-deleted':
-            job.status = 'waiting';
-            break;
-          default:
-            break;
-        }
+      this.jobs[jobIndex] = { ...job, status: 'running' };
+    },
+    onWorkerDeleted(data) {
+      const jobIndex = this.jobs.findIndex((j) => j.name === data.name);
+      const job = this.jobs[jobIndex];
 
-        this.jobs[jobIndex] = job;
-      }
+      this.jobs[jobIndex] = { ...job, status: 'waiting', lastRun: new Date() };
     }
   }
 });

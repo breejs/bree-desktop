@@ -3,19 +3,13 @@ require('source-map-support').install();
 
 import Graceful from '@ladjs/graceful';
 
-import bree from './bree';
-import messenger from './messenger';
+import app from './app';
 
 const graceful = new Graceful({
-  brees: [bree],
-  customHandlers: [messenger.stop]
+  customHandlers: [app.stop]
 });
 graceful.listen();
 
-messenger.start();
-
-messenger.log('Messenger started');
-
-bree.start();
-
-messenger.log('Bree started');
+app.start();
+app.setBreeConfig({ root: '/Users/taylorschley/Documents/jobs' });
+app.startBree();

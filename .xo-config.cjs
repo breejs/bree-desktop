@@ -60,6 +60,18 @@ module.exports = {
       rules: {
         'unicorn/no-process-exit': 'off'
       }
+    },
+    {
+      files: 'test/**/*.js',
+      rules: {
+        'max-nested-callbacks': 'off'
+      }
+    },
+    {
+      files: 'test/**/jobs/**/*.js',
+      rules: {
+        'unicorn/no-process-exit': 'off'
+      }
     }
   ]
 };
