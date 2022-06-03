@@ -1,12 +1,17 @@
 <script setup>
-import { RouterView } from 'vue-router';
+import { computed } from 'vue';
+import { RouterView, useRoute } from 'vue-router';
 
 import TheSideNav from './components/the-side-nav.vue';
+
+const route = useRoute();
+
+const showNav = computed(() => route.name !== 'preferences');
 </script>
 
 <template lang="pug">
 main
-  TheSideNav
+  TheSideNav(v-if='showNav')
 
   .p-3.mb-auto.w-100
     RouterView
