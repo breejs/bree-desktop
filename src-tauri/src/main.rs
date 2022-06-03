@@ -6,6 +6,7 @@
 use tauri::Manager;
 
 mod logger;
+mod menus;
 mod state;
 
 fn main() {
@@ -20,6 +21,16 @@ fn main() {
       state.start_bree()?;
 
       Ok(())
+    })
+    .menu(menus::create_menu())
+    .on_menu_event(|event| match event.menu_item_id() {
+      "preferences" => {
+        // show preferences window
+        let window = event.window();
+        let state = window.state::<state::State>();
+        state.open_preferences_window();
+      }
+      _ => {}
     })
     .run(tauri::generate_context!())
     .expect("error while running tauri application");

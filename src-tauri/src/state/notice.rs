@@ -13,6 +13,7 @@ impl Notice {
 
   pub fn send_bree_event(&self, msg: Message) {
     if let Some(window) = self.win.as_ref() {
+      // #[cfg(debug_assertions)]
       // log::debug!("[bree]: {:#?}", serde_json::to_string(&msg));
 
       window

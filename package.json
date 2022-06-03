@@ -34,7 +34,7 @@
     "@storybook/builder-vite": "^0.1.33",
     "@storybook/testing-vue3": "^0.0.2",
     "@storybook/vue3": "^6.4.22",
-    "@tauri-apps/cli": "^1.0.0-rc.9",
+    "@tauri-apps/cli": "^1.0.0-rc.13",
     "@testing-library/vue": "^6.4.2",
     "@vitejs/plugin-vue": "^2.3.1",
     "@vue/eslint-config-prettier": "^7.0.0",
