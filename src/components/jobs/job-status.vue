@@ -6,22 +6,38 @@ const props = defineProps({
     validator(value) {
       return ['running', 'waiting', 'stopped', 'error'].includes(value);
     },
-    default: 'error'
+    type: String,
+    required: true
+  },
+  kind: {
+    validator(value) {
+      return ['job', 'connection'].includes(value);
+    },
+    type: String,
+    default: 'job'
   }
 });
 
-const STATE_TO_COLOR = new Map([
+const STATUS_TO_COLOR = new Map([
   ['running', 'success'],
   ['waiting', 'light'],
   ['stopped', 'warning'],
   ['error', 'danger']
 ]);
 
-const classObject = computed(() => {
-  return `text-${STATE_TO_COLOR.get(props.status)}`;
+const KIND_TO_ICON = new Map([
+  ['job', 'square-fill'],
+  ['connection', 'card-list']
+]);
+
+const textClass = computed(() => {
+  return `text-${STATUS_TO_COLOR.get(props.status)}`;
+});
+const iconClass = computed(() => {
+  return `bi-${KIND_TO_ICON.get(props.kind)}`;
 });
 </script>
 
 <template lang="pug">
-i.bi.bi-square-fill.fs-3(:class='classObject')
+i.bi.fs-3(:class='[textClass, iconClass]')
 </template>

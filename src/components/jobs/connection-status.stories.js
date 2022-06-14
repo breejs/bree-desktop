@@ -1,17 +1,17 @@
-import JobStatus from './job-status.vue';
+import ConnectionStatus from './connection-status.vue';
 
 const config = {
-  title: 'Components/Jobs/Job Status',
-  component: JobStatus
+  title: 'Components/Jobs/Connection Status',
+  component: ConnectionStatus
 };
 export default config;
 
 const Template = (args) => ({
-  components: { JobStatus },
+  components: { ConnectionStatus },
   setup() {
     return { args };
   },
-  template: '<JobStatus v-bind="args" />'
+  template: '<ConnectionStatus v-bind="args" />'
 });
 
 export const Running = Template.bind({});
