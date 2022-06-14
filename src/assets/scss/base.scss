@@ -4,10 +4,12 @@
   * if we want to modify default variables
   * we will need to fork and build ourselves
   */
-@import '../../../node_modules/bootstrap-dark-5/dist/css/bootstrap-dark.min.css';
+/* @import 'node_modules/bootstrap-dark-5/scss/bootstrap-dark.scss'; */
+@import 'node_modules/bootstrap-dark-5/dist/css/bootstrap-dark.min.css';
 
 /* bootstrap-icons */
-@import '../../../node_modules/bootstrap-icons/font/bootstrap-icons.css';
+/* @import 'node_modules/bootstrap-icons/font/bootstrap-icons.scss'; */
+@import 'node_modules/bootstrap-icons/font/bootstrap-icons.css';
 
 body {
   min-height: 100vh;

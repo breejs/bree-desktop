@@ -1,5 +1,5 @@
 <script setup>
-import JobCardList from '@/components/jobs/job-card-list.vue';
+import JobList from '@/components/jobs/job-list.vue';
 import { useBreeStore } from '@/stores/bree';
 
 const breeStore = useBreeStore();
@@ -7,5 +7,5 @@ const breeStore = useBreeStore();
 
 <template lang="pug">
 .w-100
-  JobCardList(:jobs='breeStore.jobsAsArray')
+  JobList(:jobs='breeStore.jobsAsArray')
 </template>

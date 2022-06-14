@@ -1,27 +1,26 @@
 const path = require('path');
 
-const { mergeConfig } = require("vite")
+const { mergeConfig } = require('vite');
 
 module.exports = {
-  "stories": [
-    "../src/**/*.stories.mdx",
-    "../src/**/*.stories.@(js|jsx|ts|tsx)"
+  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    'storybook-addon-css-user-preferences'
   ],
-  "addons": [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials"
-  ],
-  "framework": "@storybook/vue3",
-  "core": {
-    "builder": "@storybook/builder-vite"
+  framework: '@storybook/vue3',
+  core: {
+    builder: '@storybook/builder-vite'
   },
-  async viteFinal(config, { configType }) {
-    return mergeConfig(config,{
+  async viteFinal(config, _) {
+    return mergeConfig(config, {
       resolve: {
         alias: {
-          '@': path.resolve(__dirname, '../src')
+          '@': path.resolve(__dirname, '../src'),
+          node_modules: path.resolve(__dirname, '../node_modules')
         }
       }
-    })
+    });
   }
-}
+};

@@ -23,13 +23,13 @@ module.exports = {
     'vue/array-bracket-spacing': xoConfigRules['array-bracket-spacing'],
     'vue/arrow-spacing': xoConfigRules['arrow-spacing'],
     'vue/brace-style': xoConfigRules['brace-style'],
-    'vue/camelcase': xoConfigRules['camelcase'],
+    'vue/camelcase': xoConfigRules.camelcase,
     'vue/comma-dangle': xoConfigRules['comma-dangle'],
     'vue/comma-spacing': xoConfigRules['comma-spacing'],
     'vue/comma-style': xoConfigRules['comma-style'],
     'vue/dot-location': xoConfigRules['dot-location'],
     'vue/dot-notation': xoConfigRules['dot-notation'],
-    'vue/eqeqeq': xoConfigRules['eqeqeq'],
+    'vue/eqeqeq': xoConfigRules.eqeqeq,
     'vue/func-call-spacing': xoConfigRules['func-call-spacing'],
     'vue/key-spacing': xoConfigRules['key-spacing'],
     'vue/keyword-spacing': xoConfigRules['keyword-spacing'],
@@ -50,13 +50,13 @@ module.exports = {
   },
   overrides: [
     {
-      'files': '**/*.vue',
+      files: '**/*.vue',
       rules: {
-        'no-unused-vars': 'off',
+        'no-unused-vars': 'off'
       }
     },
-    { 
-      'files': 'src-node/jobs/**/*.js',
+    {
+      files: 'src-node/jobs/**/*.js',
       rules: {
         'unicorn/no-process-exit': 'off'
       }

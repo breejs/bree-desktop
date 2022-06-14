@@ -9,11 +9,13 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('src', import.meta.url))
+      '@': fileURLToPath(new URL('src', import.meta.url)),
+      node_modules: fileURLToPath(new URL('node_modules', import.meta.url))
     }
   },
   test: {
     include: ['test/ui/**/*.{js,mjs,cjs}'],
-    environment: 'happy-dom'
+    environment: 'jsdom',
+    setupFiles: ['test/ui/_story-setup.js']
   }
 });

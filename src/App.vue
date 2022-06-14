@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { RouterView, useRoute } from 'vue-router';
 
-import TheSideNav from './components/the-side-nav.vue';
+import SidebarView from '@/views/sidebar-view.vue';
 
 const route = useRoute();
 
@@ -10,11 +10,12 @@ const showNav = computed(() => route.name !== 'preferences');
 </script>
 
 <template lang="pug">
-main
-  TheSideNav(v-if='showNav')
+.container-fluid
+  .row
+    SidebarView(v-if='showNav')
 
-  .p-3.mb-auto.w-100
-    RouterView
+    main.col-md-9.col-lg-10.px-md-4.ms-sm-auto.pt-3
+      RouterView
 </template>
 
 <style lang="scss">
@@ -22,17 +23,8 @@ main
 
 #app {
   max-width: 1920px;
-  margin: 0 auto;
+  margin: 0;
 
   font-weight: normal;
-}
-
-main {
-  display: flex;
-  flex-wrap: nowrap;
-  height: -webkit-fill-available;
-  max-height: 100vh;
-  overflow-x: auto;
-  overflow-y: hidden;
 }
 </style>

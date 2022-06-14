@@ -23,5 +23,5 @@ const classObject = computed(() => {
 </script>
 
 <template lang="pug">
-i.bi.bi-circle-fill(:class='classObject')
+i.bi.bi-square-fill.fs-3(:class='classObject')
 </template>

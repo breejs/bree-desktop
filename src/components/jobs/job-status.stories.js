@@ -1,6 +1,7 @@
 import JobStatus from './job-status.vue';
 
 const config = {
+  title: 'Components/Jobs/Job Status',
   component: JobStatus
 };
 export default config;
