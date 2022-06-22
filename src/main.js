@@ -5,6 +5,7 @@ import App from './app.vue';
 import router from './router';
 import tooltip from './directives/tooltip';
 import { useBreeStore } from './stores/bree';
+import { breeRestart, breeStop, breeStart } from './symbols';
 
 // eslint-disable-next-line import/no-unassigned-import
 import 'bootstrap';
@@ -17,8 +18,13 @@ app.directive('tooltip', tooltip);
 app.use(createPinia());
 app.use(router);
 
+// bree setup
 const breeStore = useBreeStore();
 
 breeStore.setup().catch((err) => console.error(err));
+
+app.provide(breeRestart, breeStore.restart);
+app.provide(breeStop, breeStore.stop);
+app.provide(breeStart, breeStore.start);
 
 app.mount('#app');

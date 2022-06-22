@@ -14,7 +14,7 @@ module.exports = {
   ignores: ['dist*/**'],
   parserOptions: {
     sourceType: 'module',
-    ecmaVersion: 'latest', 
+    ecmaVersion: 'latest'
   },
   rules: {
     'node/file-extension-in-import': 'off',

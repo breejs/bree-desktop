@@ -20,6 +20,9 @@ const tooltip = {
     if (arg === 'title' && value !== oldValue) {
       el.setAttribute('title', value);
     }
+  },
+  beforeUnmount(el) {
+    Tooltip.getInstance(el).dispose();
   }
 };
 export default tooltip;

@@ -1,8 +1,10 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, inject } from 'vue';
 
 import JobListItem from './job-list-item.vue';
 import JobList from './job-list.vue';
+
+import { breeRestart, breeStop, breeStart } from '@/symbols';
 
 const props = defineProps({
   connection: {
@@ -16,9 +18,18 @@ const job = computed(() => ({
   lastRun: props.connection.lastPing,
   status: props.connection.status
 }));
+
+const restart = inject(breeRestart);
+const stop = inject(breeStop);
+const start = inject(breeStart);
 </script>
 
 <template lang="pug">
 JobListItem(:kind='"connection"', :job='job')
-  JobList(:jobs='props.connection.jobs')
+  JobList(
+    :jobs='props.connection.jobs',
+    @start='start(connection.name, $event)',
+    @stop='stop(connection.name, $event)',
+    @restart='restart(connection.name, $event)'
+  )
 </template>

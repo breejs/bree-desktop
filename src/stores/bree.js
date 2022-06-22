@@ -26,6 +26,69 @@ export const useBreeStore = defineStore({
 
       connection.jobs = res.body;
     },
+    async restart(connectionName, jobName) {
+      const connection = getConnectionFromName(
+        this.connections,
+        connectionName
+      );
+      const url = `${connection.url}/v1/restart`;
+
+      if (jobName) {
+        const job = getJobFromName(connection, jobName);
+
+        job.status = 'stopped';
+
+        await request.post(`${url}/${jobName}`);
+      } else {
+        connection.status = 'stopped';
+        connection.jobs = connection.jobs.map((j) => {
+          j.status = 'stopped';
+          return j;
+        });
+
+        await request.post(url);
+
+        connection.status = 'running';
+      }
+    },
+    async stop(connectionName, jobName) {
+      const connection = getConnectionFromName(
+        this.connections,
+        connectionName
+      );
+      const url = `${connection.url}/v1/stop`;
+
+      if (jobName) {
+        const job = getJobFromName(connection, jobName);
+
+        await request.post(`${url}/${jobName}`);
+
+        job.status = 'stopped';
+      } else {
+        await request.post(url);
+
+        connection.jobs = connection.jobs.map((j) => {
+          j.status = 'stopped';
+          return j;
+        });
+        connection.status = 'stopped';
+      }
+    },
+    async start(connectionName, jobName) {
+      const connection = getConnectionFromName(
+        this.connections,
+        connectionName
+      );
+      const url = `${connection.url}/v1/start`;
+
+      if (jobName) {
+        await request.post(`${url}/${jobName}`);
+      } else {
+        await request.post(url);
+
+        connection.status = 'running';
+      }
+    },
     async startSSE(connection) {
       let url = `${connection.url}/v1/sse`;
 
@@ -39,7 +102,11 @@ export const useBreeStore = defineStore({
       es.addEventListener('open', async () => {
         await this.fetchJobs(connection);
         connection.status = 'running';
-        connection.lastRun = new Date();
+        connection.lastPing = new Date();
+      });
+
+      es.addEventListener('ping', () => {
+        connection.lastPing = new Date();
       });
 
       es.addEventListener('close', () => {
@@ -48,7 +115,7 @@ export const useBreeStore = defineStore({
       });
 
       es.addEventListener('worker created', ({ data }) => {
-        const job = connection.jobs.find((j) => j.name === data);
+        const job = getJobFromName(connection, data);
 
         if (job) {
           job.status = 'running';
@@ -59,7 +126,7 @@ export const useBreeStore = defineStore({
       });
 
       es.addEventListener('worker deleted', ({ data }) => {
-        const job = connection.jobs.find((j) => j.name === data);
+        const job = getJobFromName(connection, data);
 
         if (job) {
           job.status = 'waiting';
@@ -70,3 +137,11 @@ export const useBreeStore = defineStore({
     }
   }
 });
+
+function getConnectionFromName(connections, name) {
+  return connections.find((c) => c.name === name);
+}
+
+function getJobFromName(connection, name) {
+  return connection.jobs.find((j) => j.name === name);
+}

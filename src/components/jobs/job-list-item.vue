@@ -1,10 +1,12 @@
 <script setup>
 import dayjs from 'dayjs';
 import RelativeTime from 'dayjs/plugin/relativeTime';
-import { ref, computed } from 'vue';
+import { ref, computed, inject } from 'vue';
 
 import JobStatus from './job-status.vue';
 import ConnectionStatus from './connection-status.vue';
+
+import { breeRestart, breeStop, breeStart } from '@/symbols';
 
 dayjs.extend(RelativeTime);
 
@@ -22,6 +24,8 @@ const props = defineProps({
   }
 });
 
+defineEmits(['start', 'stop', 'restart']);
+
 const running = computed(() => {
   const { status } = props.job;
 
@@ -34,6 +38,10 @@ const lastRun = computed(() =>
     : 'Never'
 );
 const toggle = ref(false);
+
+const restart = inject(breeRestart);
+const stop = inject(breeStop);
+const start = inject(breeStart);
 </script>
 
 <template lang="pug">
@@ -63,17 +71,20 @@ li.list-group-item
     .col.col-auto(v-show='hover')
       button.btn.btn-outline-danger.me-1(
         v-if='running',
-        v-tooltip:title='"Stop"'
+        v-tooltip:title='"Stop"',
+        @click='kind === "connection" ? stop(job.name) : $emit("stop", job.name)'
       )
         i.bi.bi-stop-fill
       button.btn.btn-outline-success.me-1(
         v-if='!running',
-        v-tooltip:title='"Start"'
+        v-tooltip:title='"Start"',
+        @click='kind === "connection" ? start(job.name) : $emit("start", job.name)'
       )
         i.bi.bi-play-fill
       button.btn.btn-outline-warning.me-1(
         v-bind:disabled='!running',
-        v-tooltip:title='"Restart"'
+        v-tooltip:title='"Restart"',
+        @click='kind === "connection" ? restart(job.name) : $emit("restart", job.name)'
       )
         i.bi.bi-arrow-clockwise
       button.btn.btn-outline-danger(v-tooltip:title='"Delete"')
