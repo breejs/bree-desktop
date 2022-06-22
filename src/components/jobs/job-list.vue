@@ -10,8 +10,8 @@ const props = defineProps({
 </script>
 
 <template lang="pug">
-ul.list-group.list-group-flush
-  template(v-if='jobs.length > 0')
+ul.list-group.list-group-flush.pe-0
+  template(v-if='jobs?.length > 0')
     JobListItem(v-for='job in props.jobs', :key='job.name', :job='job')
 
   template(v-else)

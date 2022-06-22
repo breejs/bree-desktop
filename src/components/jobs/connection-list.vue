@@ -1,4 +1,5 @@
 <script setup>
+import {watch} from 'vue';
 import ConnectionListItem from './connection-list-item.vue';
 
 const props = defineProps({
@@ -11,7 +12,7 @@ const props = defineProps({
 
 <template lang="pug">
 ul.list-group.list-group-flush
-  template(v-if='connections.length > 0')
+  template(v-if='props.connections?.length > 0')
     ConnectionListItem(
       v-for='connection in props.connections',
       :key='connection.name',

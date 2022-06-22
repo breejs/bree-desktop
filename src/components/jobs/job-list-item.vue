@@ -22,7 +22,7 @@ const props = defineProps({
   }
 });
 
-const showPlay = computed(() => {
+const running = computed(() => {
   const { status } = props.job;
 
   return status === 'running' || status === 'waiting';
@@ -42,7 +42,7 @@ li.list-group-item
     @mouseover='hover = true',
     @mouseleave='hover = false'
   )
-    .col.col-auto(
+    .col.col-auto.pointer(
       v-if='props.kind === "connection"',
       @click='toggle = !toggle'
     )
@@ -62,17 +62,17 @@ li.list-group-item
           small.text-muted= '{{ lastRun }}'
     .col.col-auto(v-show='hover')
       button.btn.btn-outline-danger.me-1(
-        v-if='!showPlay',
+        v-if='running',
         v-tooltip:title='"Stop"'
       )
         i.bi.bi-stop-fill
       button.btn.btn-outline-success.me-1(
-        v-if='showPlay',
+        v-if='!running',
         v-tooltip:title='"Start"'
       )
         i.bi.bi-play-fill
       button.btn.btn-outline-warning.me-1(
-        v-bind:disabled='showPlay',
+        v-bind:disabled='!running',
         v-tooltip:title='"Restart"'
       )
         i.bi.bi-arrow-clockwise

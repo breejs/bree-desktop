@@ -13,7 +13,8 @@ module.exports = {
   extensions: ['js', 'cjs', 'mjs', 'vue'],
   ignores: ['dist*/**'],
   parserOptions: {
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaVersion: 'latest', 
   },
   rules: {
     'node/file-extension-in-import': 'off',

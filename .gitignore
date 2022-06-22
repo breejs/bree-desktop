@@ -25,3 +25,4 @@ coverage
 dist
 dist-node
 src-nodes/binaries/
+locales
