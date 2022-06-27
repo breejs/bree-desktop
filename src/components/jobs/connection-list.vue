@@ -1,5 +1,4 @@
 <script setup>
-import {watch} from 'vue';
 import ConnectionListItem from './connection-list-item.vue';
 
 const props = defineProps({

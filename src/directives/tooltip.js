@@ -19,6 +19,7 @@ const tooltip = {
 
     if (arg === 'title' && value !== oldValue) {
       el.setAttribute('title', value);
+      el.dataset.bsOriginalTitle = value;
     }
   },
   beforeUnmount(el) {

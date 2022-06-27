@@ -24,6 +24,7 @@
     "source-map-support": "^0.5.21",
     "superagent": "^7.1.6",
     "vue": "^3.2.33",
+    "vue-ls": "^4.2.0",
     "vue-router": "^4.0.14"
   },
   "devDependencies": {
@@ -88,8 +89,7 @@
     "coverage:bree": "vitest run --coverage -c vitest-bree.config.js",
     "dev": "cross-env NODE_ENV=development concurrently -p \"[{time} {name}]\" -c cyan,magenta \"yarn run dev:*\"",
     "dev:bree": "node example-server/index.mjs",
-    "dev:package": "yarn package",
-    "dev:vue": "vite",
+    "dev:vue": "vite --port 4000",
     "lint": "yarn run lint:js && yarn run lint:md",
     "lint:js": "xo",
     "lint:md": "remark . -qfo",

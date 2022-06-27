@@ -6,7 +6,8 @@ import { ref, computed, inject } from 'vue';
 import JobStatus from './job-status.vue';
 import ConnectionStatus from './connection-status.vue';
 
-import { breeRestart, breeStop, breeStart } from '@/symbols';
+import { breeRestart, breeStop, breeStart, removeConnection } from '@/symbols';
+import ls from '@/local-storage';
 
 dayjs.extend(RelativeTime);
 
@@ -29,19 +30,38 @@ defineEmits(['start', 'stop', 'restart']);
 const running = computed(() => {
   const { status } = props.job;
 
-  return status === 'running' || status === 'waiting';
+  return ['active', 'waiting', 'delayed'].includes(status);
 });
 const hover = ref(false);
-const lastRun = computed(() =>
-  props.job.lastRun && props.job.lastRun instanceof Date
-    ? dayjs(props.job.lastRun).fromNow()
-    : 'Never'
-);
-const toggle = ref(false);
+const lastRun = computed(() => {
+  const date =
+    props.job.lastRun && props.job.lastRun instanceof Date
+      ? dayjs(props.job.lastRun).fromNow()
+      : 'Never';
+  const run = props.kind === 'connection' ? 'Ping' : 'Run';
+
+  return `Last ${run}: ${date}`;
+});
+const toggle = ref(Boolean(ls.get('toggleMap')?.[props.job.name]) || false);
 
 const restart = inject(breeRestart);
 const stop = inject(breeStop);
 const start = inject(breeStart);
+// const remove = inject(removeConnection);
+
+function onToggleClick() {
+  const toggleObj = ls.get('toggleMap') || {};
+
+  toggleObj[props.job.name] = !toggleObj[props.job.name];
+
+  ls.set('toggleMap', toggleObj);
+  toggle.value = toggleObj[props.job.name];
+}
+
+// listen for toogleMap changes
+ls.on('toggleMap', (val) => {
+  toggle.value = val[props.job.name];
+});
 </script>
 
 <template lang="pug">
@@ -52,7 +72,7 @@ li.list-group-item
   )
     .col.col-auto.pointer(
       v-if='props.kind === "connection"',
-      @click='toggle = !toggle'
+      @click='onToggleClick()'
     )
       i.bi.bi-chevron-right(v-if='!toggle')
       i.bi.bi-chevron-down(v-if='toggle')
@@ -87,8 +107,11 @@ li.list-group-item
         @click='kind === "connection" ? restart(job.name) : $emit("restart", job.name)'
       )
         i.bi.bi-arrow-clockwise
-      button.btn.btn-outline-danger(v-tooltip:title='"Delete"')
-        i.bi.bi-trash-fill
+      // button.btn.btn-outline-danger(
+      //   v-tooltip:title='"Delete"',
+      //   @click='kind === "connection" ? remove(job.name) : $emit("remove", job.name)'
+      // )
+      //   i.bi.bi-trash-fill
   .row.ms-4(v-if='toggle')
     slot
 </template>

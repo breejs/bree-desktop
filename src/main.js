@@ -5,7 +5,7 @@ import App from './app.vue';
 import router from './router';
 import tooltip from './directives/tooltip';
 import { useBreeStore } from './stores/bree';
-import { breeRestart, breeStop, breeStart } from './symbols';
+import { breeRestart, breeStop, breeStart, removeConnection } from './symbols';
 
 // eslint-disable-next-line import/no-unassigned-import
 import 'bootstrap';
@@ -26,5 +26,6 @@ breeStore.setup().catch((err) => console.error(err));
 app.provide(breeRestart, breeStore.restart);
 app.provide(breeStop, breeStore.stop);
 app.provide(breeStart, breeStore.start);
+app.provide(removeConnection, breeStore.removeConnection);
 
 app.mount('#app');

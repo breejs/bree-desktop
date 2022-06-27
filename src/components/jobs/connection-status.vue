@@ -4,7 +4,7 @@ import JobStatus from './job-status.vue';
 const props = defineProps({
   status: {
     validator(value) {
-      return ['running', 'waiting', 'stopped', 'error'].includes(value);
+      return ['active', 'done', 'delayed', 'waiting', 'error'].includes(value);
     },
     type: String,
     required: true

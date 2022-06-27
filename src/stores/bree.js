@@ -8,7 +8,7 @@ export const useBreeStore = defineStore({
       {
         name: 'localhost',
         url: 'http://localhost:62893',
-        status: 'stopped'
+        status: 'done'
       }
     ]
   }),
@@ -20,6 +20,16 @@ export const useBreeStore = defineStore({
           return Promise.all([this.startSSE(c), this.fetchJobs(c)]);
         })
       );
+    },
+    removeConnection(name) {
+      const idx = this.connections.findIndex((c) => c.name === name);
+
+      if (idx >= 0) {
+        // end EventSource
+        this.connections[idx].eventSource?.close();
+
+        this.connections.splice(idx);
+      }
     },
     async fetchJobs(connection) {
       const res = await request.get(`${connection.url}/v1/jobs`);
@@ -34,21 +44,25 @@ export const useBreeStore = defineStore({
       const url = `${connection.url}/v1/restart`;
 
       if (jobName) {
-        const job = getJobFromName(connection, jobName);
+        const jobIdx = getJobIndexFromName(connection, jobName);
 
-        job.status = 'stopped';
+        connection.jobs[jobIdx].status = 'done';
 
-        await request.post(`${url}/${jobName}`);
+        const res = await request.post(`${url}/${jobName}`);
+
+        if (Array.isArray(res.body) && res.body.length === 1) {
+          connection.jobs.splice(jobIdx, 1, res.body[0]);
+        }
       } else {
-        connection.status = 'stopped';
+        connection.status = 'done';
         connection.jobs = connection.jobs.map((j) => {
-          j.status = 'stopped';
+          j.status = 'done';
           return j;
         });
 
         await request.post(url);
 
-        connection.status = 'running';
+        connection.status = 'active';
       }
     },
     async stop(connectionName, jobName) {
@@ -59,19 +73,21 @@ export const useBreeStore = defineStore({
       const url = `${connection.url}/v1/stop`;
 
       if (jobName) {
-        const job = getJobFromName(connection, jobName);
+        const jobIdx = getJobIndexFromName(connection, jobName);
 
-        await request.post(`${url}/${jobName}`);
+        const res = await request.post(`${url}/${jobName}`);
 
-        job.status = 'stopped';
+        if (Array.isArray(res.body) && res.body.length === 1) {
+          connection.jobs.splice(jobIdx, 1, res.body[0]);
+        }
       } else {
         await request.post(url);
 
         connection.jobs = connection.jobs.map((j) => {
-          j.status = 'stopped';
+          j.status = 'done';
           return j;
         });
-        connection.status = 'stopped';
+        connection.status = 'done';
       }
     },
     async start(connectionName, jobName) {
@@ -82,11 +98,17 @@ export const useBreeStore = defineStore({
       const url = `${connection.url}/v1/start`;
 
       if (jobName) {
-        await request.post(`${url}/${jobName}`);
+        const jobIdx = getJobIndexFromName(connection, jobName);
+
+        const res = await request.post(`${url}/${jobName}`);
+
+        if (Array.isArray(res.body) && res.body.length === 1) {
+          connection.jobs.splice(jobIdx, 1, res.body[0]);
+        }
       } else {
         await request.post(url);
 
-        connection.status = 'running';
+        connection.status = 'active';
       }
     },
     async startSSE(connection) {
@@ -101,7 +123,7 @@ export const useBreeStore = defineStore({
 
       es.addEventListener('open', async () => {
         await this.fetchJobs(connection);
-        connection.status = 'running';
+        connection.status = 'active';
         connection.lastPing = new Date();
       });
 
@@ -110,7 +132,7 @@ export const useBreeStore = defineStore({
       });
 
       es.addEventListener('close', () => {
-        connection.status = 'stopped';
+        connection.status = 'done';
         connection.eventSource = null;
       });
 
@@ -118,7 +140,7 @@ export const useBreeStore = defineStore({
         const job = getJobFromName(connection, data);
 
         if (job) {
-          job.status = 'running';
+          job.status = 'active';
           job.lastRun = new Date();
         } else {
           console.error(`Job "${data}" does not exist`);
@@ -144,4 +166,8 @@ function getConnectionFromName(connections, name) {
 
 function getJobFromName(connection, name) {
   return connection.jobs.find((j) => j.name === name);
+}
+
+function getJobIndexFromName(connection, name) {
+  return connection.jobs.findIndex((j) => j.name === name);
 }

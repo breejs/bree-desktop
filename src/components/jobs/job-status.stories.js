@@ -14,14 +14,17 @@ const Template = (args) => ({
   template: '<JobStatus v-bind="args" />'
 });
 
-export const Running = Template.bind({});
-Running.args = { status: 'running' };
+export const Active = Template.bind({});
+Active.args = { status: 'active' };
+
+export const Done = Template.bind({});
+Done.args = { status: 'done' };
 
 export const Waiting = Template.bind({});
 Waiting.args = { status: 'waiting' };
 
-export const Stopped = Template.bind({});
-Stopped.args = { status: 'stopped' };
+export const Delayed = Template.bind({});
+Delayed.args = { status: 'delayed' };
 
 export const Error = Template.bind({});
 Error.args = { status: 'error' };
