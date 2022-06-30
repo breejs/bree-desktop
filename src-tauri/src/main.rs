@@ -13,6 +13,8 @@ fn main() {
   // setup logger
   logger::setup_logger().expect("Failed to setup logger");
 
+  let context = tauri::generate_context!();
+
   tauri::Builder::default()
     .manage(state::State::new())
     .setup(|app| {
@@ -21,7 +23,8 @@ fn main() {
 
       Ok(())
     })
-    .menu(menus::create_menu())
+    // .menu(menus::create_menu())
+    .menu(tauri::Menu::os_default(&context.package_info().name))
     .on_menu_event(|event| match event.menu_item_id() {
       "preferences" => {
         // show preferences window
@@ -31,6 +34,6 @@ fn main() {
       }
       _ => {}
     })
-    .run(tauri::generate_context!())
+    .run(context)
     .expect("error while running tauri application");
 }

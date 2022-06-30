@@ -1,6 +1,6 @@
 {
   "package": {
-    "productName": "bree-desktop",
+    "productName": "Bree",
     "version": "0.1.0"
   },
   "build": {
@@ -51,7 +51,7 @@
     "windows": [
       {
         "label": "main",
-        "title": "Bree Desktop",
+        "title": "Bree",
         "width": 1920,
         "height": 1080,
         "resizable": true,
