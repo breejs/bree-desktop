@@ -3,6 +3,13 @@
  * The main sidebar view
  */
 import { RouterLink } from 'vue-router';
+import { useBreeStore } from '@/stores/bree';
+
+const breeStore = useBreeStore();
+
+function displayConnName(conn) {
+  return ` ${conn.name}`;
+}
 </script>
 
 <template lang="pug">
@@ -12,8 +19,12 @@ nav.col-md-3.col-lg-2.sidebar.collapse.show.pt-1
       li.nav-item
         RouterLink.nav-link(:to='{ name: "dashboard" }')
           .bi.bi-house-door= ' Dashboard'
-      li.nav-item
-        RouterLink.nav-link(to='/about')= 'About'
+        ul.nav.flex-column.ms-3(v-if='breeStore.connections.length > 0')
+          li.nav-item(v-for='conn in breeStore.connections')
+            RouterLink.nav-link(
+              :to='{ name: "connection", params: { connection: conn.name } }'
+            )
+              .bi.bi-card-list= '{{ displayConnName(conn) }}'
 </template>
 
 <style lang="scss" scoped>

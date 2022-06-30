@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import DashboardView from '@/views/dashboard-view.vue';
 import PreferencesView from '@/views/preferences-view.vue';
+import ConnectionView from '@/views/connection-view.vue';
 
 export const routes = [
   {
@@ -12,6 +13,12 @@ export const routes = [
     path: '/preferences',
     name: 'preferences',
     component: PreferencesView
+  },
+  {
+    path: '/connection/:connection',
+    name: 'connection',
+    component: ConnectionView,
+    props: true
   }
 ];
 
