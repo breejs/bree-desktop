@@ -85,24 +85,20 @@
   "scripts": {
     "build": "concurrently -p \"[{time}-{name}]\" -c cyan,magenta \"yarn run build:*\"",
     "build-storybook": "build-storybook",
-    "build:package": "yarn package",
     "build:vue": "vite build",
     "coverage": "viteset run --coverage",
     "coverage:bree": "vitest run --coverage -c vitest-bree.config.js",
     "dev": "cross-env NODE_ENV=development concurrently -p \"[{time} {name}]\" -c cyan,magenta \"yarn run dev:*\"",
     "dev:bree": "node example-server/index.mjs",
-    "dev:vue": "vite --port 4000",
+    "dev:vue": "vite --port 3000",
     "lint": "yarn run lint:js && yarn run lint:md",
     "lint:js": "xo",
     "lint:md": "remark . -qfo",
-    "package": "node scripts/build.mjs",
     "prepare": "husky install",
     "pretest": "yarn run lint",
     "preview": "vite preview --port 5050",
     "start:dev": "tauri dev",
     "storybook": "start-storybook -p 6006",
-    "test": "yarn run test:ui && yarn run test:bree",
-    "test:bree": "vitest -c vitest-bree.config.js",
-    "test:ui": "vitest"
+    "test": "vitest"
   }
 }

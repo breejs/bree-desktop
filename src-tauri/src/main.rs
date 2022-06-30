@@ -18,7 +18,6 @@ fn main() {
     .setup(|app| {
       let state = app.state::<state::State>();
       state.set_win(app.get_window("main"));
-      state.start_bree()?;
 
       Ok(())
     })

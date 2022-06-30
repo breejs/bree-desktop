@@ -22,7 +22,6 @@
         "icons/icon.ico"
       ],
       "resources": [],
-      "externalBin": ["binaries/node"],
       "copyright": "",
       "category": "DeveloperTool",
       "shortDescription": "",
@@ -47,17 +46,7 @@
       "active": false
     },
     "allowlist": {
-      "all": true,
-      "shell": {
-        "sidecar": true,
-        "scope": [
-          {
-            "name": "binaries/node",
-            "sidecar": true,
-            "cmd": ""
-          }
-        ]
-      }
+      "all": true
     },
     "windows": [
       {
