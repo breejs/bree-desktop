@@ -12,9 +12,9 @@ const showNav = computed(() => route.name !== 'preferences');
 <template lang="pug">
 .container-fluid
   .row
-    SidebarView(v-if='showNav')
+    SidebarView.col(v-if='showNav')
 
-    main.col-md-9.col-lg-10.px-md-4.ms-sm-auto.pt-3
+    main.col.col-md-9.col-lg-10.px-md-4.ms-sm-auto.pt-3
       RouterView
 </template>
 

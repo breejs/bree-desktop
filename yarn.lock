@@ -1702,6 +1702,11 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
+"@nexucis/fuzzy@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.npmjs.org/@nexucis/fuzzy/-/fuzzy-0.4.1.tgz#d1d669af5231f21a7340fec0183bfaa4ef091eff"
+  integrity sha512-oe+IW6ELwVGYL3340M+nKIT1exZizOjxdUFlTs36BqzxTENBbynG+cCWr4RNaUQF3bV78NspKwTBpTlnYADrTA==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"

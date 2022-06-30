@@ -28,8 +28,8 @@ const start = inject(breeStart);
 JobListItem(:kind='"connection"', :job='job')
   JobList(
     :jobs='props.connection.jobs',
-    @start='start(connection.name, $event)',
-    @stop='stop(connection.name, $event)',
-    @restart='restart(connection.name, $event)'
+    @start='start(connection.name, $event.name)',
+    @stop='stop(connection.name, $event.name)',
+    @restart='restart(connection.name, $event.name)'
   )
 </template>

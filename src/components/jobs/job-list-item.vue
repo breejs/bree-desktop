@@ -71,20 +71,23 @@ li.list-group-item
     @mouseleave='hover = false'
   )
     .col.col-auto.pointer(
-      v-if='props.kind === "connection"',
+      v-if='kind === "connection"',
       @click='onToggleClick()'
     )
       i.bi.bi-chevron-right(v-if='!toggle')
       i.bi.bi-chevron-down(v-if='toggle')
     .col.col-auto
-      template(v-if='props.kind === "job"')
-        JobStatus(:status='props.job.status')
-      template(v-if='props.kind === "connection"')
-        ConnectionStatus(:status='props.job.status')
+      template(v-if='kind === "job"')
+        JobStatus(:status='job.status')
+      template(v-if='kind === "connection"')
+        ConnectionStatus(:status='job.status')
     .col.text-start.lh-1
       .row
         .col
-          small= '{{ props.job.name }}'
+          small
+            = '{{ job.name }}'
+            span.text-muted(v-if='job.connection?.name')
+              = ' - {{ job.connection.name }}'
       .row
         .col
           small.text-muted= '{{ lastRun }}'
@@ -92,19 +95,19 @@ li.list-group-item
       button.btn.btn-outline-danger.me-1(
         v-if='running',
         v-tooltip:title='"Stop"',
-        @click='kind === "connection" ? stop(job.name) : $emit("stop", job.name)'
+        @click='kind === "connection" ? stop(job.name) : $emit("stop", job)'
       )
         i.bi.bi-stop-fill
       button.btn.btn-outline-success.me-1(
         v-if='!running',
         v-tooltip:title='"Start"',
-        @click='kind === "connection" ? start(job.name) : $emit("start", job.name)'
+        @click='kind === "connection" ? start(job.name) : $emit("start", job)'
       )
         i.bi.bi-play-fill
       button.btn.btn-outline-warning.me-1(
         v-bind:disabled='!running',
         v-tooltip:title='"Restart"',
-        @click='kind === "connection" ? restart(job.name) : $emit("restart", job.name)'
+        @click='kind === "connection" ? restart(job.name) : $emit("restart", job)'
       )
         i.bi.bi-arrow-clockwise
       // button.btn.btn-outline-danger(
