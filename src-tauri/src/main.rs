@@ -23,8 +23,7 @@ fn main() {
 
       Ok(())
     })
-    // .menu(menus::create_menu())
-    .menu(tauri::Menu::os_default(&context.package_info().name))
+    .menu(menus::create_menu(&context.package_info().name))
     .on_menu_event(|event| match event.menu_item_id() {
       "preferences" => {
         // show preferences window
