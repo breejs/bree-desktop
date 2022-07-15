@@ -1,0 +1,11 @@
+// Vitest Snapshot v1
+
+exports[`story snapshots > Active 1`] = `"<i class=\\"bi fs-3 text-active bi-card-list\\" data-v-3b64800a=\\"\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Active\\" aria-label=\\"Active\\"></i>"`;
+
+exports[`story snapshots > Delayed 1`] = `"<i class=\\"bi fs-3 text-delayed bi-card-list\\" data-v-3b64800a=\\"\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Delayed\\" aria-label=\\"Delayed\\"></i>"`;
+
+exports[`story snapshots > Done 1`] = `"<i class=\\"bi fs-3 text-done bi-card-list\\" data-v-3b64800a=\\"\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Done\\" aria-label=\\"Done\\"></i>"`;
+
+exports[`story snapshots > Error 1`] = `"<i class=\\"bi fs-3 text-error bi-card-list\\" data-v-3b64800a=\\"\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Error\\" aria-label=\\"Error\\"></i>"`;
+
+exports[`story snapshots > Waiting 1`] = `"<i class=\\"bi fs-3 text-waiting bi-card-list\\" data-v-3b64800a=\\"\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Waiting\\" aria-label=\\"Waiting\\"></i>"`;

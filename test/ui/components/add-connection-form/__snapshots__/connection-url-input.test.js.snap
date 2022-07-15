@@ -1,0 +1,25 @@
+// Vitest Snapshot v1
+
+exports[`story snapshots > Default 1`] = `
+"<form novalidate=\\"\\">
+  <div class=\\"form-floating\\"><input class=\\"form-control\\" id=\\"connection-url-input\\" name=\\"url\\" type=\\"url\\" placeholder=\\"http://localhost:62893\\" required=\\"\\"><label for=\\"connection-url-input\\">URL*</label>
+    <div class=\\"invalid-feedback\\">Enter a valid URL</div>
+  </div>
+</form>"
+`;
+
+exports[`story snapshots > Invalid 1`] = `
+"<form novalidate=\\"\\">
+  <div class=\\"form-floating\\"><input class=\\"form-control\\" id=\\"connection-url-input\\" name=\\"url\\" type=\\"url\\" placeholder=\\"http://localhost:62893\\" required=\\"\\"><label for=\\"connection-url-input\\">URL*</label>
+    <div class=\\"invalid-feedback\\">Enter a valid URL</div>
+  </div>
+</form>"
+`;
+
+exports[`story snapshots > Valid 1`] = `
+"<form novalidate=\\"\\">
+  <div class=\\"form-floating\\"><input class=\\"form-control\\" id=\\"connection-url-input\\" name=\\"url\\" type=\\"url\\" placeholder=\\"http://localhost:62893\\" required=\\"\\"><label for=\\"connection-url-input\\">URL*</label>
+    <div class=\\"invalid-feedback\\">Enter a valid URL</div>
+  </div>
+</form>"
+`;

@@ -19,7 +19,7 @@ Running.args = {
   connection: {
     name: 'Running Connection',
     lastPing: new Date(2022, 3, 4, 8, 0, 0, 0),
-    status: 'running',
+    status: 'active',
     jobs: [
       {
         name: 'Waiting Job',
@@ -29,7 +29,7 @@ Running.args = {
       {
         name: 'Stopped Job',
         lastRun: new Date(2022, 3, 4, 5, 0, 0, 0),
-        status: 'stopped'
+        status: 'done'
       },
       {
         name: 'Errored Job',
@@ -38,7 +38,7 @@ Running.args = {
       {
         name: 'Running Job',
         lastRun: new Date(2022, 3, 4, 8, 0, 0, 0),
-        status: 'running'
+        status: 'active'
       }
     ]
   }
@@ -49,7 +49,7 @@ Stopped.args = {
   connection: {
     name: 'Stopped Connection',
     lastPing: new Date(2022, 3, 4, 5, 0, 0, 0),
-    status: 'stopped',
+    status: 'done',
     jobs: [
       {
         name: 'Waiting Job',
@@ -59,7 +59,7 @@ Stopped.args = {
       {
         name: 'Stopped Job',
         lastRun: new Date(2022, 3, 4, 5, 0, 0, 0),
-        status: 'stopped'
+        status: 'done'
       },
       {
         name: 'Errored Job',
@@ -68,7 +68,7 @@ Stopped.args = {
       {
         name: 'Running Job',
         lastRun: new Date(2022, 3, 4, 8, 0, 0, 0),
-        status: 'running'
+        status: 'active'
       }
     ]
   }

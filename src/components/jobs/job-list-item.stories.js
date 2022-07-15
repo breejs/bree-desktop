@@ -19,7 +19,7 @@ Running.args = {
   job: {
     name: 'Running Job',
     lastRun: new Date(2022, 3, 4, 8, 0, 0, 0),
-    status: 'running'
+    status: 'active'
   }
 };
 
@@ -37,7 +37,7 @@ Stopped.args = {
   job: {
     name: 'Stopped Job',
     lastRun: new Date(2022, 3, 4, 5, 0, 0, 0),
-    status: 'stopped'
+    status: 'done'
   }
 };
 

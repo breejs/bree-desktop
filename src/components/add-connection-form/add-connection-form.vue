@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, onMounted, watchEffect } from 'vue';
+import { ref, watchEffect } from 'vue';
 import ConnectionUrlInput from './connection-url-input.vue';
 import ConnectionTokenInput from './connection-token-input.vue';
 import ConnectionNameInput from './connection-name-input.vue';

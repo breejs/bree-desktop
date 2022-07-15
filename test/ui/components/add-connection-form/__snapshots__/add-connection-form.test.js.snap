@@ -1,0 +1,106 @@
+// Vitest Snapshot v1
+
+exports[`story snapshots > Default 1`] = `
+"<button class=\\"btn btn-success\\" type=\\"button\\" data-bs-toggle=\\"modal\\" data-bs-target=\\"#add-connection-modal\\" aria-hidden=\\"true\\">Add Connection</button>
+<div class=\\"modal fade\\" id=\\"add-connection-modal\\" tabindex=\\"-1\\" role=\\"dialog\\">
+  <form novalidate=\\"\\">
+    <div class=\\"modal-dialog\\">
+      <div class=\\"modal-content\\">
+        <div class=\\"modal-header\\">
+          <h4 class=\\"modal-title\\">Add Connection</h4>
+        </div>
+        <div class=\\"modal-body container-fluid\\">
+          <div class=\\"row g-3\\">
+            <div class=\\"col-12\\">
+              <div class=\\"form-floating\\" modelvalue=\\"localhost\\"><input class=\\"form-control\\" id=\\"connection-name-input\\" name=\\"name\\" type=\\"text\\" placeholder=\\"\\" required=\\"\\"><label for=\\"connection-name-input\\">Name*</label>
+                <div class=\\"invalid-feedback\\">Enter a valid name that is unique</div>
+              </div>
+            </div>
+            <div class=\\"col-12\\">
+              <div class=\\"form-floating\\"><input class=\\"form-control\\" id=\\"connection-url-input\\" name=\\"url\\" type=\\"url\\" placeholder=\\"http://localhost:62893\\" required=\\"\\"><label for=\\"connection-url-input\\">URL*</label>
+                <div class=\\"invalid-feedback\\">Enter a valid URL</div>
+              </div>
+            </div>
+            <div class=\\"col-12\\">
+              <div class=\\"form-floating\\"><input class=\\"form-control\\" id=\\"connection-token-input\\" name=\\"token\\" type=\\"text\\" placeholder=\\"\\"><label for=\\"connection-token-input\\">Token</label>
+                <div class=\\"invalid-feedback\\">Enter a valid JWT token</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class=\\"modal-footer\\"><button class=\\"btn btn-danger mr-3\\" type=\\"button\\" data-bs-dismiss=\\"modal\\"> Cancel</button><button class=\\"btn btn-success\\" type=\\"submit\\" disabled=\\"\\" data-bs-dismiss=\\"modal\\"> Add</button></div>
+      </div>
+    </div>
+  </form>
+</div>"
+`;
+
+exports[`story snapshots > Invalid 1`] = `
+"<button class=\\"btn btn-success\\" type=\\"button\\" data-bs-toggle=\\"modal\\" data-bs-target=\\"#add-connection-modal\\" aria-hidden=\\"true\\">Add Connection</button>
+<div class=\\"modal fade\\" id=\\"add-connection-modal\\" tabindex=\\"-1\\" role=\\"dialog\\">
+  <form novalidate=\\"\\">
+    <div class=\\"modal-dialog\\">
+      <div class=\\"modal-content\\">
+        <div class=\\"modal-header\\">
+          <h4 class=\\"modal-title\\">Add Connection</h4>
+        </div>
+        <div class=\\"modal-body container-fluid\\">
+          <div class=\\"row g-3\\">
+            <div class=\\"col-12\\">
+              <div class=\\"form-floating\\" modelvalue=\\"\\"><input class=\\"form-control\\" id=\\"connection-name-input\\" name=\\"name\\" type=\\"text\\" placeholder=\\"\\" required=\\"\\"><label for=\\"connection-name-input\\">Name*</label>
+                <div class=\\"invalid-feedback\\">Enter a valid name that is unique</div>
+              </div>
+            </div>
+            <div class=\\"col-12\\">
+              <div class=\\"form-floating\\"><input class=\\"form-control\\" id=\\"connection-url-input\\" name=\\"url\\" type=\\"url\\" placeholder=\\"http://localhost:62893\\" required=\\"\\"><label for=\\"connection-url-input\\">URL*</label>
+                <div class=\\"invalid-feedback\\">Enter a valid URL</div>
+              </div>
+            </div>
+            <div class=\\"col-12\\">
+              <div class=\\"form-floating\\"><input class=\\"form-control\\" id=\\"connection-token-input\\" name=\\"token\\" type=\\"text\\" placeholder=\\"\\"><label for=\\"connection-token-input\\">Token</label>
+                <div class=\\"invalid-feedback\\">Enter a valid JWT token</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class=\\"modal-footer\\"><button class=\\"btn btn-danger mr-3\\" type=\\"button\\" data-bs-dismiss=\\"modal\\"> Cancel</button><button class=\\"btn btn-success\\" type=\\"submit\\" disabled=\\"\\" data-bs-dismiss=\\"modal\\"> Add</button></div>
+      </div>
+    </div>
+  </form>
+</div>"
+`;
+
+exports[`story snapshots > Valid 1`] = `
+"<button class=\\"btn btn-success\\" type=\\"button\\" data-bs-toggle=\\"modal\\" data-bs-target=\\"#add-connection-modal\\" aria-hidden=\\"true\\">Add Connection</button>
+<div class=\\"modal fade\\" id=\\"add-connection-modal\\" tabindex=\\"-1\\" role=\\"dialog\\">
+  <form novalidate=\\"\\">
+    <div class=\\"modal-dialog\\">
+      <div class=\\"modal-content\\">
+        <div class=\\"modal-header\\">
+          <h4 class=\\"modal-title\\">Add Connection</h4>
+        </div>
+        <div class=\\"modal-body container-fluid\\">
+          <div class=\\"row g-3\\">
+            <div class=\\"col-12\\">
+              <div class=\\"form-floating\\" modelvalue=\\"\\"><input class=\\"form-control\\" id=\\"connection-name-input\\" name=\\"name\\" type=\\"text\\" placeholder=\\"\\" required=\\"\\"><label for=\\"connection-name-input\\">Name*</label>
+                <div class=\\"invalid-feedback\\">Enter a valid name that is unique</div>
+              </div>
+            </div>
+            <div class=\\"col-12\\">
+              <div class=\\"form-floating\\"><input class=\\"form-control\\" id=\\"connection-url-input\\" name=\\"url\\" type=\\"url\\" placeholder=\\"http://localhost:62893\\" required=\\"\\"><label for=\\"connection-url-input\\">URL*</label>
+                <div class=\\"invalid-feedback\\">Enter a valid URL</div>
+              </div>
+            </div>
+            <div class=\\"col-12\\">
+              <div class=\\"form-floating\\"><input class=\\"form-control\\" id=\\"connection-token-input\\" name=\\"token\\" type=\\"text\\" placeholder=\\"\\"><label for=\\"connection-token-input\\">Token</label>
+                <div class=\\"invalid-feedback\\">Enter a valid JWT token</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class=\\"modal-footer\\"><button class=\\"btn btn-danger mr-3\\" type=\\"button\\" data-bs-dismiss=\\"modal\\"> Cancel</button><button class=\\"btn btn-success\\" type=\\"submit\\" disabled=\\"\\" data-bs-dismiss=\\"modal\\"> Add</button></div>
+      </div>
+    </div>
+  </form>
+</div>"
+`;

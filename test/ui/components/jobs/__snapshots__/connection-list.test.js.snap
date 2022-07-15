@@ -1,0 +1,68 @@
+// Vitest Snapshot v1
+
+exports[`story snapshots > Connections 1`] = `
+"<ul class=\\"list-group list-group-flush\\">
+  <li class=\\"list-group-item\\">
+    <div class=\\"row align-items-center\\">
+      <div class=\\"col col-auto pointer\\"><i class=\\"bi bi-chevron-right\\"></i>
+        <!--v-if-->
+      </div>
+      <div class=\\"col col-auto\\">
+        <!--v-if--><i class=\\"bi fs-3 text-active bi-card-list\\" data-v-3b64800a=\\"\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Active\\" aria-label=\\"Active\\"></i>
+      </div>
+      <div class=\\"col text-start lh-1\\">
+        <div class=\\"row\\">
+          <div class=\\"col\\"><small>Running Connection
+              <!--v-if-->
+            </small></div>
+        </div>
+        <div class=\\"row\\">
+          <div class=\\"col\\"><small class=\\"text-muted\\">Last Ping: 3 months ago</small></div>
+        </div>
+      </div>
+      <div class=\\"col col-auto\\" style=\\"display: none;\\"><button class=\\"btn btn-outline-danger me-1\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Stop\\" aria-label=\\"Stop\\"><i class=\\"bi bi-stop-fill\\"></i></button>
+        <!--v-if--><button class=\\"btn btn-outline-warning me-1\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Restart\\" aria-label=\\"Restart\\"><i class=\\"bi bi-arrow-clockwise\\"></i></button><!-- button.btn.btn-outline-danger(-->
+        <!--   v-tooltip:title='\\"Delete\\"',-->
+        <!--   @click='kind === \\"connection\\" ? remove(job.name) : $emit(\\"remove\\", job.name)'-->
+        <!-- )-->
+        <!--   i.bi.bi-trash-fill-->
+      </div>
+    </div>
+    <!--v-if-->
+  </li>
+  <li class=\\"list-group-item\\">
+    <div class=\\"row align-items-center\\">
+      <div class=\\"col col-auto pointer\\"><i class=\\"bi bi-chevron-right\\"></i>
+        <!--v-if-->
+      </div>
+      <div class=\\"col col-auto\\">
+        <!--v-if--><i class=\\"bi fs-3 text-done bi-card-list\\" data-v-3b64800a=\\"\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Done\\" aria-label=\\"Done\\"></i>
+      </div>
+      <div class=\\"col text-start lh-1\\">
+        <div class=\\"row\\">
+          <div class=\\"col\\"><small>Stopped Connection
+              <!--v-if-->
+            </small></div>
+        </div>
+        <div class=\\"row\\">
+          <div class=\\"col\\"><small class=\\"text-muted\\">Last Ping: 3 months ago</small></div>
+        </div>
+      </div>
+      <div class=\\"col col-auto\\" style=\\"display: none;\\">
+        <!--v-if--><button class=\\"btn btn-outline-success me-1\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Start\\" aria-label=\\"Start\\"><i class=\\"bi bi-play-fill\\"></i></button><button class=\\"btn btn-outline-warning me-1\\" disabled=\\"\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Restart\\" aria-label=\\"Restart\\"><i class=\\"bi bi-arrow-clockwise\\"></i></button><!-- button.btn.btn-outline-danger(-->
+        <!--   v-tooltip:title='\\"Delete\\"',-->
+        <!--   @click='kind === \\"connection\\" ? remove(job.name) : $emit(\\"remove\\", job.name)'-->
+        <!-- )-->
+        <!--   i.bi.bi-trash-fill-->
+      </div>
+    </div>
+    <!--v-if-->
+  </li>
+</ul>"
+`;
+
+exports[`story snapshots > NoConnections 1`] = `
+"<ul class=\\"list-group list-group-flush\\">
+  <li class=\\"list-group-item\\">No connections</li>
+</ul>"
+`;

@@ -1,11 +1,12 @@
+import '@/assets/scss/base.scss';
+// eslint-disable-next-line import/no-unassigned-import
+import 'bootstrap';
+
 import { themes } from '@storybook/theming';
 import { app } from '@storybook/vue3';
 
 import tooltip from '@/directives/tooltip';
-
-import '@/assets/scss/base.scss';
-// eslint-disable-next-line import/no-unassigned-import
-import 'bootstrap';
+import { breeRestart, breeStop, breeStart, removeConnection } from '@/symbols';
 
 // directives
 app.directive('tooltip', tooltip);
@@ -22,3 +23,19 @@ export const parameters = {
     theme: themes.dark
   }
 };
+
+export const decorators = [
+  (story) => ({
+    template: `<story/>`,
+    components: { story },
+    provide: {
+      [breeRestart]() {},
+      [breeStop]() {},
+      [breeStart]() {},
+      [removeConnection]() {}
+    },
+    directives: {
+      tooltip
+    }
+  })
+];

@@ -1,0 +1,25 @@
+// Vitest Snapshot v1
+
+exports[`story snapshots > Default 1`] = `
+"<form novalidate=\\"\\">
+  <div class=\\"form-floating\\"><input class=\\"form-control\\" id=\\"connection-name-input\\" name=\\"name\\" type=\\"text\\" placeholder=\\"\\" required=\\"\\"><label for=\\"connection-name-input\\">Name*</label>
+    <div class=\\"invalid-feedback\\">Enter a valid name that is unique</div>
+  </div>
+</form>"
+`;
+
+exports[`story snapshots > Invalid 1`] = `
+"<form novalidate=\\"\\">
+  <div class=\\"form-floating\\"><input class=\\"form-control\\" id=\\"connection-name-input\\" name=\\"name\\" type=\\"text\\" placeholder=\\"\\" required=\\"\\"><label for=\\"connection-name-input\\">Name*</label>
+    <div class=\\"invalid-feedback\\">Enter a valid name that is unique</div>
+  </div>
+</form>"
+`;
+
+exports[`story snapshots > Valid 1`] = `
+"<form novalidate=\\"\\">
+  <div class=\\"form-floating\\"><input class=\\"form-control\\" id=\\"connection-name-input\\" name=\\"name\\" type=\\"text\\" placeholder=\\"\\" required=\\"\\"><label for=\\"connection-name-input\\">Name*</label>
+    <div class=\\"invalid-feedback\\">Enter a valid name that is unique</div>
+  </div>
+</form>"
+`;
