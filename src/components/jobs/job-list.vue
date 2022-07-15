@@ -3,7 +3,7 @@ import JobListItem from './job-list-item.vue';
 
 const props = defineProps({
   jobs: {
-    type: Array,
+    type: [Array, undefined],
     required: true
   }
 });
