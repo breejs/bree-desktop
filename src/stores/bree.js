@@ -198,7 +198,12 @@ export const useBreeStore = defineStore({
         connection.lastPing = new Date();
       });
 
+      es.addEventListener('error', () => {
+        connection.status = 'error';
+      });
+
       es.addEventListener('close', () => {
+        console.log('close');
         connection.status = 'done';
         connection.eventSource = null;
       });
