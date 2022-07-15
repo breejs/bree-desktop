@@ -23,7 +23,13 @@ pub fn create_menu(#[allow(unused)] app_name: &str) -> Menu {
   }
 
   let mut file_menu = Menu::new();
-  file_menu = file_menu.add_native_item(MenuItem::CloseWindow);
+  file_menu = file_menu
+    .add_item(
+      CustomMenuItem::new("new".to_string(), "Add New Connection...")
+        .accelerator("CmdOrCtrl+N"),
+    )
+    .add_native_item(MenuItem::Separator)
+    .add_native_item(MenuItem::CloseWindow);
   #[cfg(not(target_os = "macos"))]
   {
     file_menu = file_menu.add_native_item(MenuItem::Quit);

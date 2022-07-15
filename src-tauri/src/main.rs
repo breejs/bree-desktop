@@ -31,6 +31,13 @@ fn main() {
         let state = window.state::<state::State>();
         state.open_preferences_window();
       }
+      "new" => {
+        // show new connection modal
+        let window = event.window();
+        window
+          .emit("show-new-connection", {})
+          .expect("Failed to emit 'show-new-connection' event");
+      }
       _ => {}
     })
     .run(context)

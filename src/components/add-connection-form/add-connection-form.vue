@@ -1,5 +1,7 @@
 <script setup>
-import { ref, watchEffect } from 'vue';
+import { ref, watchEffect, onMounted } from 'vue';
+import Modal from 'bootstrap/js/dist/modal';
+
 import ConnectionUrlInput from './connection-url-input.vue';
 import ConnectionTokenInput from './connection-token-input.vue';
 import ConnectionNameInput from './connection-name-input.vue';
@@ -28,12 +30,21 @@ const props = defineProps({
   connectionNames: {
     type: Array,
     default: () => []
+  },
+  /**
+   * show the modal
+   * @type {boolean}
+   */
+  show: {
+    type: Boolean,
+    default: false
   }
 });
 
-const emit = defineEmits(['submit']);
+const emit = defineEmits(['submit', 'modalHidden']);
 
 const form = ref(null);
+const modalRef = ref(null);
 
 /** maintain value of name input */
 const name = ref(props.value.name ?? '');
@@ -79,18 +90,22 @@ watchEffect(() => {
   valid.value =
     tokenInput.value?.valid && urlInput.value?.valid && nameInput.value?.valid;
 });
+
+onMounted(() => {
+  if (props.show) {
+    const modal = Modal.getOrCreateInstance('#add-connection-modal');
+
+    modal.show();
+  }
+
+  modalRef.value.addEventListener('hidden.bs.modal', () => {
+    emit('modalHidden');
+  });
+});
 </script>
 
 <template lang="pug">
-button.btn.btn-success(
-  type='button',
-  data-bs-toggle='modal',
-  data-bs-target='#add-connection-modal',
-  aria-hidden='true'
-)
-  | Add Connection
-
-#add-connection-modal.modal.fade(tabindex='-1', role='dialog')
+#add-connection-modal.modal.fade(ref='modalRef', tabindex='-1', role='dialog')
   form(novalidate, ref='form', @submit.prevent='onSubmit($event)')
     .modal-dialog
       .modal-content

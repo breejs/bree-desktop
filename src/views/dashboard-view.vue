@@ -70,6 +70,14 @@ function onFilter(value) {
         @change='onFilter($event)'
       )
     .col.col-auto
+      button.btn.btn-success(
+        type='button',
+        data-bs-toggle='modal',
+        data-bs-target='#add-connection-modal',
+        aria-hidden='true'
+      )
+        | Add Connection
+
       AddConnectionForm(
         :connectionNames='connectionNames',
         @submit='breeStore.addConnection($event)'
