@@ -15,7 +15,9 @@ function useTauriNewConnection() {
   if (!window.__TAURI__?.window) {
     console.warn('Not a tauri window');
 
-    return;
+    return {
+      showConnectionForm: false
+    };
   }
 
   const { appWindow } = window.__TAURI__.window;
