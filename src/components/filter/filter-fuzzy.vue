@@ -17,7 +17,7 @@ const props = defineProps({
   },
   // function that takes a value and returns a string
   selector: {
-    type: Function,
+    type: [Function, Boolean],
     default: false
   },
   caseSensitive: {
@@ -40,7 +40,7 @@ function onChange(value) {
 watchEffect(() => {
   if (props.list) {
     listRef.value = props.selector
-      ? props.list.map(props.selector)
+      ? props.list.map((val) => props.selector(val))
       : props.list;
   }
 });

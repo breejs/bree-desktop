@@ -6509,6 +6509,11 @@ eslint-config-prettier@^8.3.0, eslint-config-prettier@^8.5.0:
   resolved "https://registry.npmjs.org/eslint-config-prettier/-/eslint-config-prettier-8.5.0.tgz#5a81680ec934beca02c7b1a61cf8ca34b66feab1"
   integrity sha512-obmWKLUNCnhtQRKc+tmnYuQl0pFU1ibYJQ5BGhTVB08bHe9wC8qUeG7c08dj9XX+AuPj1YSGSQIHl1pnDHZR0Q==
 
+eslint-config-vitest-globals@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.npmjs.org/eslint-config-vitest-globals/-/eslint-config-vitest-globals-0.0.3.tgz#2276c9ea72d0e0d5e0bd0a64d7bc3b1b76923a7d"
+  integrity sha512-w+opH7EFLErO82C1LzuY5xXCzDtUi8NtnPwng5Xzlz0UN+bJ48JgR1UqygAnZYPghdqSJNbeB6N2Z34zPr5f2Q==
+
 eslint-config-xo-lass@latest:
   version "1.0.6"
   resolved "https://registry.npmjs.org/eslint-config-xo-lass/-/eslint-config-xo-lass-1.0.6.tgz#6c27c2b694aea2e3ebc49ab50b4699ce747a5a5b"
@@ -11940,6 +11945,11 @@ pify@^4.0.1:
   version "4.0.1"
   resolved "https://registry.npmjs.org/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
   integrity sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
+
+pinia-plugin-persistedstate@^1.6.3:
+  version "1.6.3"
+  resolved "https://registry.npmjs.org/pinia-plugin-persistedstate/-/pinia-plugin-persistedstate-1.6.3.tgz#6cd691f96814603c70ec5bb756f9f4d037b1aec8"
+  integrity sha512-vwxUca3DZKW6+wnGsgu6hA0ESVKoLovF8vH1jMOPBhaH4VpCSTgn5AsprTxXyg3uMk047m0B+NggeMTcCC8H6w==
 
 pinia@^2.0.13:
   version "2.0.14"

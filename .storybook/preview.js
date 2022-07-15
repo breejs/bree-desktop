@@ -4,6 +4,8 @@ import { app } from '@storybook/vue3';
 import tooltip from '@/directives/tooltip';
 
 import '@/assets/scss/base.scss';
+// eslint-disable-next-line import/no-unassigned-import
+import 'bootstrap';
 
 // directives
 app.directive('tooltip', tooltip);

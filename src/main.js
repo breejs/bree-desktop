@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
+import piniaPluginPersistedState from 'pinia-plugin-persistedstate';
 
 import App from './app.vue';
 import router from './router';
@@ -15,7 +16,13 @@ const app = createApp(App);
 // directives
 app.directive('tooltip', tooltip);
 
-app.use(createPinia());
+// setup pinia
+const pinia = createPinia();
+pinia.use(piniaPluginPersistedState);
+
+app.use(pinia);
+
+// setup router
 app.use(router);
 
 // bree setup

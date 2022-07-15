@@ -14,7 +14,8 @@ export default defineConfig({
     }
   },
   test: {
-    include: ['test/ui/**/*.{js,mjs,cjs}'],
+    globals: true,
+    include: ['test/ui/**/*.test.{js,mjs,cjs}'],
     environment: 'jsdom',
     setupFiles: ['test/ui/_story-setup.js']
   }

@@ -3,17 +3,22 @@ import request from 'superagent';
 
 export const useBreeStore = defineStore({
   id: 'bree',
+  persist: true,
   state: () => ({
+    /** @type {Connection[]} */
     connections: [
-      {
+      /* {
         name: 'localhost',
         url: 'http://localhost:62893',
         status: 'done'
-      }
+      } */
     ]
   }),
   getters: {},
   actions: {
+    /**
+     * setup all connections
+     */
     async setup() {
       return Promise.all(
         this.connections.map(async (c) => {
@@ -21,6 +26,26 @@ export const useBreeStore = defineStore({
         })
       );
     },
+
+    /**
+     * add a new connection
+     *
+     * @param {Connection} connection
+     *
+     * @returns {Promise<void>}
+     */
+    async addConnection({ name, url, token }) {
+      const connection = { name, url, token, status: 'waiting' };
+      this.connections.push(connection);
+
+      return this.startSSE(connection);
+    },
+
+    /**
+     * remove a connection
+     *
+     * @param {string} name
+     */
     removeConnection(name) {
       const idx = this.connections.findIndex((c) => c.name === name);
 
@@ -31,11 +56,28 @@ export const useBreeStore = defineStore({
         this.connections.splice(idx);
       }
     },
+
+    /**
+     * fetch jobs for a connection
+     *
+     * @param {Connection} connection
+     *
+     * @returns {Promise<void>}
+     */
     async fetchJobs(connection) {
       const res = await request.get(`${connection.url}/v1/jobs`);
 
       connection.jobs = res.body;
     },
+
+    /**
+     * restrart job or connection
+     *
+     * @param {string} connectionName
+     * @param {string} jobName
+     *
+     * @returns {Promise<void>}
+     */
     async restart(connectionName, jobName) {
       const connection = getConnectionFromName(
         this.connections,
@@ -65,6 +107,15 @@ export const useBreeStore = defineStore({
         connection.status = 'active';
       }
     },
+
+    /**
+     * stop job or connection
+     *
+     * @param {string} connectionName
+     * @param {string} jobName
+     *
+     * @returns {Promise<void>}
+     */
     async stop(connectionName, jobName) {
       const connection = getConnectionFromName(
         this.connections,
@@ -90,6 +141,15 @@ export const useBreeStore = defineStore({
         connection.status = 'done';
       }
     },
+
+    /**
+     * start job or connection
+     *
+     * @param {string} connectionName
+     * @param {string} jobName
+     *
+     * @returns {Promise<void>}
+     */
     async start(connectionName, jobName) {
       const connection = getConnectionFromName(
         this.connections,
@@ -111,6 +171,13 @@ export const useBreeStore = defineStore({
         connection.status = 'active';
       }
     },
+
+    /**
+     * start SSE for a connection
+     * @param {Connection} connection
+     *
+     * @returns {Promise<void>}
+     */
     async startSSE(connection) {
       let url = `${connection.url}/v1/sse`;
 
@@ -160,14 +227,50 @@ export const useBreeStore = defineStore({
   }
 });
 
+/**
+ * get connection from name
+ *
+ * @param {Connection[]} connections
+ * @param {string} name
+ *
+ * @returns {Connection|undefined}
+ */
 function getConnectionFromName(connections, name) {
   return connections.find((c) => c.name === name);
 }
 
+/**
+ * get job from name
+ *
+ * @param {Connection} connection
+ * @param {string} name
+ *
+ * @returns {Job|undefined}
+ */
 function getJobFromName(connection, name) {
   return connection.jobs.find((j) => j.name === name);
 }
 
+/**
+ * get job index from name
+ *
+ * @param {Connection} connection
+ * @param {string} name
+ *
+ * @returns {number}
+ */
 function getJobIndexFromName(connection, name) {
   return connection.jobs.findIndex((j) => j.name === name);
 }
+
+/**
+ * @typedef {Object} Connection
+ *
+ * @property {string} name
+ * @property {string} url
+ * @property {string} [token]
+ * @property {string} status
+ * @property {EventSource} [eventSource]
+ * @property {Date} [lastPing]
+ * @property {Job[]} jobs
+ */

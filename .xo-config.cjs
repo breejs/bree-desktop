@@ -64,6 +64,7 @@ module.exports = {
     },
     {
       files: 'test/**/*.js',
+      extends: ['eslint-config-vitest-globals'],
       rules: {
         'max-nested-callbacks': 'off'
       }
