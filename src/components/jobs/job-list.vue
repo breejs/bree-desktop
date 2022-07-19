@@ -1,10 +1,11 @@
 <script setup>
 import JobListItem from './job-list-item.vue';
 
-const props = defineProps({
+defineProps({
   jobs: {
     type: [Array, undefined],
-    required: true
+    required: true,
+    default: () => []
   }
 });
 
@@ -15,7 +16,7 @@ defineEmits(['start', 'stop', 'restart']);
 ul.list-group.list-group-flush.pe-0
   template(v-if='jobs?.length > 0')
     JobListItem(
-      v-for='job in props.jobs',
+      v-for='job in jobs',
       :key='job.name',
       :job='job',
       @start='$emit("start", $event)',

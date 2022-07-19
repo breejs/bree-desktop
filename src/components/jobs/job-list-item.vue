@@ -47,7 +47,7 @@ const toggle = ref(Boolean(ls.get('toggleMap')?.[props.job.name]) || false);
 const restart = inject(breeRestart);
 const stop = inject(breeStop);
 const start = inject(breeStart);
-// const remove = inject(removeConnection);
+const remove = inject(removeConnection);
 
 function onToggleClick() {
   const toggleObj = ls.get('toggleMap') || {};
@@ -110,11 +110,12 @@ li.list-group-item
         @click='kind === "connection" ? restart(job.name) : $emit("restart", job)'
       )
         i.bi.bi-arrow-clockwise
-      // button.btn.btn-outline-danger(
-      //   v-tooltip:title='"Delete"',
-      //   @click='kind === "connection" ? remove(job.name) : $emit("remove", job.name)'
-      // )
-      //   i.bi.bi-trash-fill
+      button.btn.btn-outline-danger(
+        v-if='kind === "connection"',
+        v-tooltip:title='"Delete"',
+        @click='remove(job.name)'
+      )
+        i.bi.bi-trash-fill
   .row.ms-4(v-if='toggle')
     slot
 </template>

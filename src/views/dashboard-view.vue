@@ -1,6 +1,7 @@
 <script setup>
 import { watch, ref, computed } from 'vue';
 
+import { storeToRefs } from 'pinia';
 import { useBreeStore } from '@/stores/bree';
 import ConnectionList from '@/components/jobs/connection-list.vue';
 import JobList from '@/components/jobs/job-list.vue';
@@ -9,6 +10,7 @@ import AddConnectionForm from '@/components/add-connection-form/add-connection-f
 
 /** bree store */
 const breeStore = useBreeStore();
+const { connections } = storeToRefs(breeStore);
 
 /** debounce time (ms) */
 const debounce = 250;
@@ -21,7 +23,7 @@ const filteredList = ref([]);
 /** list of connection names */
 const connectionNames = ref([]);
 
-watch(breeStore.connections, (value) => {
+watch(connections, (value) => {
   const jobs = [];
   const names = [];
 

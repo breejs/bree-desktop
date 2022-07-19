@@ -27,7 +27,7 @@ const start = inject(breeStart);
 <template lang="pug">
 JobListItem(:kind='"connection"', :job='job')
   JobList(
-    :jobs='props.connection.jobs',
+    :jobs='connection.jobs',
     @start='start(connection.name, $event.name)',
     @stop='stop(connection.name, $event.name)',
     @restart='restart(connection.name, $event.name)'

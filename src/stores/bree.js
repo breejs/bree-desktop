@@ -22,7 +22,7 @@ export const useBreeStore = defineStore({
     async setup() {
       return Promise.all(
         this.connections.map(async (c) => {
-          return Promise.all([this.startSSE(c), this.fetchJobs(c)]);
+          return this.startSSE(c);
         })
       );
     },
@@ -66,6 +66,8 @@ export const useBreeStore = defineStore({
      */
     async fetchJobs(connection) {
       const res = await request.get(`${connection.url}/v1/jobs`);
+
+      connection = getConnectionFromName(this.connections, connection.name);
 
       connection.jobs = res.body;
     },
@@ -179,6 +181,7 @@ export const useBreeStore = defineStore({
      * @returns {Promise<void>}
      */
     async startSSE(connection) {
+      connection = getConnectionFromName(this.connections, connection.name);
       let url = `${connection.url}/v1/sse`;
 
       if (connection.token) {
@@ -190,7 +193,6 @@ export const useBreeStore = defineStore({
 
       es.addEventListener('open', async () => {
         await this.fetchJobs(connection);
-        connection.status = 'active';
         connection.lastPing = new Date();
       });
 
@@ -198,12 +200,15 @@ export const useBreeStore = defineStore({
         connection.lastPing = new Date();
       });
 
+      es.addEventListener('status', ({ data }) => {
+        connection.status = data ? 'active' : 'done';
+      });
+
       es.addEventListener('error', () => {
         connection.status = 'error';
       });
 
       es.addEventListener('close', () => {
-        console.log('close');
         connection.status = 'done';
         connection.eventSource = null;
       });
