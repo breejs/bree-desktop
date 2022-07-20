@@ -90,6 +90,7 @@
     "lint": "yarn run lint:js && yarn run lint:md",
     "lint:js": "xo",
     "lint:md": "remark . -qfo",
+    "postversion": "node scripts/update-versions.js",
     "prepare": "husky install",
     "pretest": "yarn run lint",
     "preview": "vite preview --port 5050",
