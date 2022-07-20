@@ -83,7 +83,7 @@
     "build": "concurrently -p \"[{time}-{name}]\" -c cyan,magenta \"yarn run build:*\"",
     "build-storybook": "build-storybook",
     "build:vue": "vite build",
-    "coverage": "viteset run --coverage",
+    "coverage": "vitest run --coverage",
     "dev": "cross-env NODE_ENV=development concurrently -p \"[{time} {name}]\" -c cyan,magenta \"yarn run dev:*\"",
     "dev:bree": "node example-server/index.mjs",
     "dev:vue": "vite --port 3000",
