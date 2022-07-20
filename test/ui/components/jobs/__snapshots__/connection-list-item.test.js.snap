@@ -12,19 +12,16 @@ exports[`story snapshots > Running 1`] = `
     <div class=\\"col text-start lh-1\\">
       <div class=\\"row\\">
         <div class=\\"col\\"><small>Running Connection
-            <!--v-if-->
+            <!--v-if--><span class=\\"ms-3\\"><!--v-if--></span>
           </small></div>
       </div>
       <div class=\\"row\\">
-        <div class=\\"col\\"><small class=\\"text-muted\\">Last Ping: 3 months ago</small></div>
+        <div class=\\"col\\"><small class=\\"text-muted\\">Last Ping: 4 months ago</small></div>
       </div>
     </div>
-    <div class=\\"col col-auto\\" style=\\"display: none;\\"><button class=\\"btn btn-outline-danger me-1\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Stop\\" aria-label=\\"Stop\\"><i class=\\"bi bi-stop-fill\\"></i></button>
-      <!--v-if--><button class=\\"btn btn-outline-warning me-1\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Restart\\" aria-label=\\"Restart\\"><i class=\\"bi bi-arrow-clockwise\\"></i></button><!-- button.btn.btn-outline-danger(-->
-      <!--   v-tooltip:title='\\"Delete\\"',-->
-      <!--   @click='kind === \\"connection\\" ? remove(job.name) : $emit(\\"remove\\", job.name)'-->
-      <!-- )-->
-      <!--   i.bi.bi-trash-fill-->
+    <div class=\\"col col-auto\\" style=\\"display: none;\\">
+      <!--v-if--><button class=\\"btn btn-outline-danger me-1\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Stop\\" aria-label=\\"Stop\\"><i class=\\"bi bi-stop-fill\\"></i></button>
+      <!--v-if--><button class=\\"btn btn-outline-warning me-1\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Restart\\" aria-label=\\"Restart\\"><i class=\\"bi bi-arrow-clockwise\\"></i></button><button class=\\"btn btn-outline-danger\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Delete\\" aria-label=\\"Delete\\"><i class=\\"bi bi-trash-fill\\"></i></button>
     </div>
   </div>
   <!--v-if-->
@@ -43,19 +40,16 @@ exports[`story snapshots > Stopped 1`] = `
     <div class=\\"col text-start lh-1\\">
       <div class=\\"row\\">
         <div class=\\"col\\"><small>Stopped Connection
-            <!--v-if-->
+            <!--v-if--><span class=\\"ms-3\\"><!--v-if--></span>
           </small></div>
       </div>
       <div class=\\"row\\">
-        <div class=\\"col\\"><small class=\\"text-muted\\">Last Ping: 3 months ago</small></div>
+        <div class=\\"col\\"><small class=\\"text-muted\\">Last Ping: 4 months ago</small></div>
       </div>
     </div>
     <div class=\\"col col-auto\\" style=\\"display: none;\\">
-      <!--v-if--><button class=\\"btn btn-outline-success me-1\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Start\\" aria-label=\\"Start\\"><i class=\\"bi bi-play-fill\\"></i></button><button class=\\"btn btn-outline-warning me-1\\" disabled=\\"\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Restart\\" aria-label=\\"Restart\\"><i class=\\"bi bi-arrow-clockwise\\"></i></button><!-- button.btn.btn-outline-danger(-->
-      <!--   v-tooltip:title='\\"Delete\\"',-->
-      <!--   @click='kind === \\"connection\\" ? remove(job.name) : $emit(\\"remove\\", job.name)'-->
-      <!-- )-->
-      <!--   i.bi.bi-trash-fill-->
+      <!--v-if-->
+      <!--v-if--><button class=\\"btn btn-outline-success me-1\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Start\\" aria-label=\\"Start\\"><i class=\\"bi bi-play-fill\\"></i></button><button class=\\"btn btn-outline-warning me-1\\" disabled=\\"\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Restart\\" aria-label=\\"Restart\\"><i class=\\"bi bi-arrow-clockwise\\"></i></button><button class=\\"btn btn-outline-danger\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Delete\\" aria-label=\\"Delete\\"><i class=\\"bi bi-trash-fill\\"></i></button>
     </div>
   </div>
   <!--v-if-->

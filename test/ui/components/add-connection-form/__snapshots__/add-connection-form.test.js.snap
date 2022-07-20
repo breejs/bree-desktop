@@ -1,8 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`story snapshots > Default 1`] = `
-"<button class=\\"btn btn-success\\" type=\\"button\\" data-bs-toggle=\\"modal\\" data-bs-target=\\"#add-connection-modal\\" aria-hidden=\\"true\\">Add Connection</button>
-<div class=\\"modal fade\\" id=\\"add-connection-modal\\" tabindex=\\"-1\\" role=\\"dialog\\">
+"<div class=\\"modal fade\\" id=\\"add-connection-modal\\" tabindex=\\"-1\\" role=\\"dialog\\">
   <form novalidate=\\"\\">
     <div class=\\"modal-dialog\\">
       <div class=\\"modal-content\\">
@@ -36,8 +35,7 @@ exports[`story snapshots > Default 1`] = `
 `;
 
 exports[`story snapshots > Invalid 1`] = `
-"<button class=\\"btn btn-success\\" type=\\"button\\" data-bs-toggle=\\"modal\\" data-bs-target=\\"#add-connection-modal\\" aria-hidden=\\"true\\">Add Connection</button>
-<div class=\\"modal fade\\" id=\\"add-connection-modal\\" tabindex=\\"-1\\" role=\\"dialog\\">
+"<div class=\\"modal fade\\" id=\\"add-connection-modal\\" tabindex=\\"-1\\" role=\\"dialog\\">
   <form novalidate=\\"\\">
     <div class=\\"modal-dialog\\">
       <div class=\\"modal-content\\">
@@ -71,8 +69,7 @@ exports[`story snapshots > Invalid 1`] = `
 `;
 
 exports[`story snapshots > Valid 1`] = `
-"<button class=\\"btn btn-success\\" type=\\"button\\" data-bs-toggle=\\"modal\\" data-bs-target=\\"#add-connection-modal\\" aria-hidden=\\"true\\">Add Connection</button>
-<div class=\\"modal fade\\" id=\\"add-connection-modal\\" tabindex=\\"-1\\" role=\\"dialog\\">
+"<div class=\\"modal fade\\" id=\\"add-connection-modal\\" tabindex=\\"-1\\" role=\\"dialog\\">
   <form novalidate=\\"\\">
     <div class=\\"modal-dialog\\">
       <div class=\\"modal-content\\">

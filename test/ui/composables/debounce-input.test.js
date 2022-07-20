@@ -14,7 +14,9 @@ describe('useDebounceInput', () => {
 
     await fireEvent.update(getByTestId('input'), 'test');
 
-    expect(emitted('update:value')).toBeTruthy();
+    await waitFor(() => {
+      expect(emitted('update:value')).toBeTruthy();
+    });
   });
 
   describe('onMounted', () => {
