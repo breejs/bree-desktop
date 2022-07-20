@@ -56,6 +56,7 @@
     "husky": "latest",
     "jsdom": "^20.0.0",
     "lint-staged": "^13.0.3",
+    "np": "^7.6.2",
     "postcss-nesting": "^10.1.8",
     "pug": "^3.0.2",
     "remark-cli": "^11.0.0",
@@ -94,6 +95,7 @@
     "prepare": "husky install",
     "pretest": "yarn run lint",
     "preview": "vite preview --port 5050",
+    "release": "np",
     "start:dev": "tauri dev",
     "storybook": "start-storybook -p 6006",
     "test": "vitest"
