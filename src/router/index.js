@@ -19,6 +19,10 @@ export const routes = [
     name: 'connection',
     component: ConnectionView,
     props: true
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/'
   }
 ];
 
