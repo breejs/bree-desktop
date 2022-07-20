@@ -76,6 +76,9 @@
   ],
   "license": "MIT",
   "main": "src/main.js",
+  "np": {
+    "testScript": "publish-test"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/breejs/bree-desktop"
@@ -95,6 +98,7 @@
     "prepare": "husky install",
     "pretest": "yarn run lint",
     "preview": "vite preview --port 5050",
+    "publish-test": "yarn run lint && vitest run",
     "release": "np",
     "start:dev": "tauri dev",
     "storybook": "start-storybook -p 6006",
