@@ -17,7 +17,7 @@ module.exports = {
     ecmaVersion: 'latest'
   },
   rules: {
-    'node/file-extension-in-import': 'off',
+    'n/file-extension-in-import': 'off',
 
     // xo extensions
     'vue/array-bracket-newline': xoConfigRules['array-bracket-newline'],
