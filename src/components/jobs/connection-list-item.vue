@@ -19,6 +19,16 @@ const job = computed(() => ({
   status: props.connection.status
 }));
 
+const allowEdit = computed(() => {
+  if (!props.connection?.url) {
+    return false;
+  }
+
+  const url = new URL(props.connection.url);
+
+  return url.hostname === 'localhost';
+});
+
 const restart = inject(breeRestart);
 const stop = inject(breeStop);
 const start = inject(breeStart);
@@ -28,6 +38,7 @@ const start = inject(breeStart);
 JobListItem(:kind='"connection"', :job='job')
   JobList(
     :jobs='connection.jobs',
+    :allowEdit='allowEdit',
     @start='start(connection.name, $event.name)',
     @stop='stop(connection.name, $event.name)',
     @restart='restart(connection.name, $event.name)'

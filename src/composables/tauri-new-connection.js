@@ -1,6 +1,7 @@
 import { ref, computed } from 'vue';
 
 import { useBreeStore } from '@/stores/bree';
+import isTauri from '@/helpers/is-tauri';
 
 /**
  * handle add new connection event from tauri
@@ -12,9 +13,7 @@ import { useBreeStore } from '@/stores/bree';
  * @returns {function} return.onHidden - on modal being hidden
  */
 function useTauriNewConnection() {
-  if (!window.__TAURI__?.window) {
-    console.warn('Not a tauri window');
-
+  if (!isTauri) {
     return {
       showConnectionForm: false
     };

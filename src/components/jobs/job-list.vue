@@ -6,6 +6,10 @@ defineProps({
     type: [Array, undefined],
     required: true,
     default: () => []
+  },
+  allowEdit: {
+    type: Boolean,
+    default: false
   }
 });
 
@@ -19,6 +23,7 @@ ul.list-group.list-group-flush.pe-0
       v-for='job in jobs',
       :key='job.name',
       :job='job',
+      :allowEdit='allowEdit',
       @start='$emit("start", $event)',
       @stop='$emit("stop", $event)',
       @restart='$emit("restart", $event)'

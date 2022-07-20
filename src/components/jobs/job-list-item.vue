@@ -9,6 +9,7 @@ import ConnectionStatus from './connection-status.vue';
 
 import { breeRestart, breeStop, breeStart, removeConnection } from '@/symbols';
 import ls from '@/local-storage';
+import useTauriOpenFile from '@/composables/tauri-open-file';
 
 dayjs.extend(RelativeTime);
 
@@ -23,6 +24,10 @@ const props = defineProps({
     },
     type: String,
     default: 'job'
+  },
+  allowEdit: {
+    type: Boolean,
+    default: false
   }
 });
 
@@ -44,6 +49,8 @@ const lastRun = computed(() => {
   return `Last ${run}: ${date}`;
 });
 const toggle = ref(Boolean(ls.get('toggleMap')?.[props.job.name]) || false);
+
+const openFile = useTauriOpenFile();
 
 const restart = inject(breeRestart);
 const stop = inject(breeStop);
@@ -97,6 +104,12 @@ li.list-group-item
         .col
           small.text-muted= '{{ lastRun }}'
     .col.col-auto(v-show='hover')
+      button.btn.btn-outline-info.me-1(
+        v-if='openFile && allowEdit && kind === "job" && job.path',
+        v-tooltip:title='"Edit"',
+        @click='openFile(job.path)'
+      )
+        i.bi.bi-pencil-square
       button.btn.btn-outline-danger.me-1(
         v-if='running',
         v-tooltip:title='"Stop"',
