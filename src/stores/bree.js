@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia';
 import request from 'superagent';
 
+import { useLoadingStore } from './loading';
+
 export const useBreeStore = defineStore({
   id: 'bree',
   persist: true,
@@ -65,11 +67,19 @@ export const useBreeStore = defineStore({
      * @returns {Promise<void>}
      */
     async fetchJobs(connection) {
+      const loading = useLoadingStore();
+
+      loading.add(connection.name);
       const res = await request.get(`${connection.url}/v1/jobs`);
 
       connection = getConnectionFromName(this.connections, connection.name);
 
-      connection.jobs = res.body;
+      connection.jobs = res.body.map((j) => ({
+        ...j,
+        hash: getJobHash(connection.name, j.name)
+      }));
+
+      loading.remove(connection.name);
     },
 
     /**
@@ -81,6 +91,7 @@ export const useBreeStore = defineStore({
      * @returns {Promise<void>}
      */
     async restart(connectionName, jobName) {
+      const loading = useLoadingStore();
       const connection = getConnectionFromName(
         this.connections,
         connectionName
@@ -92,22 +103,45 @@ export const useBreeStore = defineStore({
 
         connection.jobs[jobIdx].status = 'done';
 
-        const res = await request.post(`${url}/${jobName}`);
+        loading.add(connection.jobs[jobIdx].hash);
 
-        if (Array.isArray(res.body) && res.body.length === 1) {
-          connection.jobs.splice(jobIdx, 1, res.body[0]);
+        try {
+          const res = await request.post(`${url}/${jobName}`);
+
+          if (Array.isArray(res.body) && res.body.length === 1) {
+            connection.jobs.splice(jobIdx, 1, {
+              ...res.body[0],
+              hash: connection.jobs[jobIdx].hash
+            });
+          }
+        } catch (err) {
+          connection.jobs[jobIdx].status = 'error';
+
+          console.error(err);
         }
-      } else {
-        connection.status = 'done';
-        connection.jobs = connection.jobs.map((j) => {
-          j.status = 'done';
-          return j;
-        });
 
+        loading.remove(connection.jobs[jobIdx].hash);
+
+        return;
+      }
+
+      connection.status = 'done';
+
+      loading.add(connection.name);
+
+      try {
         await request.post(url);
 
         connection.status = 'active';
+      } catch (err) {
+        connection.status = 'error';
+
+        console.error(err);
       }
+
+      loading.remove(connection.name);
+
+      return this.fetchJobs(connection);
     },
 
     /**
@@ -119,6 +153,7 @@ export const useBreeStore = defineStore({
      * @returns {Promise<void>}
      */
     async stop(connectionName, jobName) {
+      const loading = useLoadingStore();
       const connection = getConnectionFromName(
         this.connections,
         connectionName
@@ -128,12 +163,29 @@ export const useBreeStore = defineStore({
       if (jobName) {
         const jobIdx = getJobIndexFromName(connection, jobName);
 
-        const res = await request.post(`${url}/${jobName}`);
+        loading.add(connection.jobs[jobIdx].hash);
+        try {
+          const res = await request.post(`${url}/${jobName}`);
 
-        if (Array.isArray(res.body) && res.body.length === 1) {
-          connection.jobs.splice(jobIdx, 1, res.body[0]);
+          if (Array.isArray(res.body) && res.body.length === 1) {
+            connection.jobs.splice(jobIdx, 1, {
+              ...res.body[0],
+              hash: connection.jobs[jobIdx].hash
+            });
+          }
+        } catch (err) {
+          connection.jobs[jobIdx].status = 'error';
+
+          console.error(err);
         }
-      } else {
+
+        loading.remove(connection.jobs[jobIdx].hash);
+
+        return;
+      }
+
+      loading.add(connection.name);
+      try {
         await request.post(url);
 
         connection.jobs = connection.jobs.map((j) => {
@@ -141,7 +193,13 @@ export const useBreeStore = defineStore({
           return j;
         });
         connection.status = 'done';
+      } catch (err) {
+        connection.status = 'error';
+
+        console.error(err);
       }
+
+      loading.remove(connection.name);
     },
 
     /**
@@ -153,6 +211,7 @@ export const useBreeStore = defineStore({
      * @returns {Promise<void>}
      */
     async start(connectionName, jobName) {
+      const loading = useLoadingStore();
       const connection = getConnectionFromName(
         this.connections,
         connectionName
@@ -162,15 +221,25 @@ export const useBreeStore = defineStore({
       if (jobName) {
         const jobIdx = getJobIndexFromName(connection, jobName);
 
+        loading.add(connection.jobs[jobIdx].hash);
         const res = await request.post(`${url}/${jobName}`);
 
         if (Array.isArray(res.body) && res.body.length === 1) {
-          connection.jobs.splice(jobIdx, 1, res.body[0]);
+          connection.jobs.splice(jobIdx, 1, {
+            ...res.body[0],
+            hash: connection.jobs[jobIdx].hash
+          });
         }
+
+        loading.remove(connection.jobs[jobIdx].hash);
       } else {
+        loading.add(connection.name);
         await request.post(url);
 
         connection.status = 'active';
+        loading.remove(connection.name);
+
+        return this.fetchJobs(connection);
       }
     },
 
@@ -201,7 +270,7 @@ export const useBreeStore = defineStore({
       });
 
       es.addEventListener('status', ({ data }) => {
-        connection.status = data ? 'active' : 'done';
+        connection.status = JSON.parse(data) ? 'active' : 'done';
       });
 
       es.addEventListener('error', () => {
@@ -271,6 +340,18 @@ function getJobFromName(connection, name) {
  */
 function getJobIndexFromName(connection, name) {
   return connection.jobs.findIndex((j) => j.name === name);
+}
+
+/**
+ * get hash from connection name and job name
+ *
+ * @param {string} connectionName
+ * @param {string} jobName
+ *
+ * @returns {string}
+ */
+export function getJobHash(connectionName, jobName) {
+  return JSON.stringify({ connection: connectionName, job: jobName });
 }
 
 /**

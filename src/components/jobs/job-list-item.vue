@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import RelativeTime from 'dayjs/plugin/relativeTime';
 import { ref, computed, inject } from 'vue';
 
+import LoadingSpinner from '../loading-spinner.vue';
 import JobStatus from './job-status.vue';
 import ConnectionStatus from './connection-status.vue';
 
@@ -88,6 +89,10 @@ li.list-group-item
             = '{{ job.name }}'
             span.text-muted(v-if='job.connection?.name')
               = ' - {{ job.connection.name }}'
+            span.ms-3
+              LoadingSpinner(
+                :name='kind === "connection" ? job.name : job.hash'
+              )
       .row
         .col
           small.text-muted= '{{ lastRun }}'
