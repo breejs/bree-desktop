@@ -3,11 +3,8 @@
   windows_subsystem = "windows"
 )]
 
-use tauri::Manager;
-
 mod logger;
 mod menus;
-mod state;
 
 fn main() {
   // setup logger
@@ -16,21 +13,8 @@ fn main() {
   let context = tauri::generate_context!();
 
   tauri::Builder::default()
-    .manage(state::State::new())
-    .setup(|app| {
-      let state = app.state::<state::State>();
-      state.set_win(app.get_window("main"));
-
-      Ok(())
-    })
     .menu(menus::create_menu(&context.package_info().name))
     .on_menu_event(|event| match event.menu_item_id() {
-      "preferences" => {
-        // show preferences window
-        let window = event.window();
-        let state = window.state::<state::State>();
-        state.open_preferences_window();
-      }
       "new" => {
         // show new connection modal
         let window = event.window();
