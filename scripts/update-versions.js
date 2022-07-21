@@ -20,12 +20,15 @@ const { exec } = require('child_process');
 
   console.log('Adding to git commit...');
   await new Promise((resolve, reject) => {
-    exec(`git add ${tauriConfPath}`, (error) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve();
+    exec(
+      `git add ${tauriConfPath} && git commit --amend --no-edit`,
+      (error) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve();
+        }
       }
-    });
+    );
   });
 })().catch(console.error);
