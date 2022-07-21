@@ -33,7 +33,7 @@ const releaseData = {
       signature: '',
       url: ''
     },
-    'darwin-x86_64': {
+    'darwin-linux': {
       signature: '',
       url: ''
     },
@@ -50,32 +50,48 @@ const releaseData = {
 
 const promises = latestRelease.assets.map(
   async ({ name, browser_download_url }) => {
-    const signature = await getSignature(browser_download_url);
+    // win64 url
+    if (name.endsWith('.msi.zip') && name.includes('en-US')) {
+      releaseData.platforms['windows-x86_64'].url = browser_download_url;
+    }
 
-    if (name.endsWith('.app.tar.gz')) {
+    // win64 signature
+    if (name.endsWith('.msi.zip.sig') && name.includes('en-US')) {
+      const sig = await getSignature(browser_download_url);
+      releaseData.platforms['windows-x86_64'].signature = sig;
+    }
+
+    // darwin url (intel)
+    if (name.endsWith('.app.tar.gz') && !name.includes('aarch')) {
+      releaseData.platforms['darwin-intel'].url = browser_download_url;
+    }
+
+    // darwin signature (intel)
+    if (name.endsWith('.app.tar.gz.sig') && !name.includes('aarch')) {
+      const sig = await getSignature(browser_download_url);
+      releaseData.platforms['darwin-intel'].signature = sig;
+    }
+
+    // darwin url (aarch)
+    if (name.endsWith('aarch64.app.tar.gz')) {
       releaseData.platforms['darwin-aarch64'].url = browser_download_url;
-      releaseData.platforms['darwin-x86_64'].url = browser_download_url;
     }
 
-    if (name.endsWith('.app.tar.gz.sig')) {
-      releaseData.platforms['darwin-aarch64'].signature = signature;
-      releaseData.platforms['darwin-x86_64'].signature = signature;
+    // darwin signature (aarch)
+    if (name.endsWith('aarch64.app.tar.gz.sig')) {
+      const sig = await getSignature(browser_download_url);
+      releaseData.platforms['darwin-aarch64'].signature = sig;
     }
 
+    // linux url
     if (name.endsWith('.AppImage.tar.gz')) {
       releaseData.platforms['linux-x86_64'].url = browser_download_url;
     }
 
+    // linux signature
     if (name.endsWith('.AppImage.tar.gz.sig')) {
-      releaseData.platforms['linux-x86_64'].signature = signature;
-    }
-
-    if (name.endsWith('.msi.zip')) {
-      releaseData.platforms['windows-x86_64'].url = browser_download_url;
-    }
-
-    if (name.endsWith('.msi.zip.sig')) {
-      releaseData.platforms['windows-x86_64'].signature = signature;
+      const sig = await getSignature(browser_download_url);
+      releaseData.platforms['linux-x86_64'].signature = sig;
     }
   }
 );
