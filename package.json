@@ -1,7 +1,7 @@
 {
   "name": "bree-desktop",
   "description": "Bree Desktop Application",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Taylor Schley <taylorschley@me.com> (https://github.com/shadowgate15)",
   "bin": "scripts/move-binary.mjs",
   "bugs": {
