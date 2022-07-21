@@ -44,7 +44,9 @@
       }
     },
     "updater": {
-      "active": false
+      "active": true,
+      "endpoints": ["https://github.com/breejs/bree-desktop/releases/download/updater/release.json"],
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IERFMkYwMUE2REE5MjhCOTgKUldTWWk1TGFwZ0V2M2lVekc1Y0drOUJhdkdwbnJ6WjIvR0NJaXNpeHhwRG9oczNMbW0rMGY3TkIK"
     },
     "allowlist": {
       "shell": {

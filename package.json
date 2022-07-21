@@ -28,6 +28,7 @@
     "vue-router": "^4.0.14"
   },
   "devDependencies": {
+    "@actions/github": "^5.0.3",
     "@babel/core": "^7.17.12",
     "@breejs/api": "^1.0.2",
     "@commitlint/cli": "^17.0.3",
