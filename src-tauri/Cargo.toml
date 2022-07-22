@@ -20,7 +20,7 @@ chrono = "0.4.19"
 fern = { version = "0.6.1", features = ["colored"] }
 log = "0.4.17"
 parking_lot = "0.12.1"
-tauri = { version = "1.0.4", features = ["shell-open"] }
+tauri = { version = "1.0.4", features = ["shell-open", "updater"] }
 
 [features]
 # by default Tauri runs in production mode
