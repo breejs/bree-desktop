@@ -7,10 +7,12 @@ import ConnectionList from '@/components/jobs/connection-list.vue';
 import JobList from '@/components/jobs/job-list.vue';
 import FilterFuzzy from '@/components/filter/filter-fuzzy.vue';
 import AddConnectionForm from '@/components/add-connection-form/add-connection-form.vue';
+import StatsCard from '@/components/stats/stats-card.vue';
 
 /** bree store */
 const breeStore = useBreeStore();
-const { connections } = storeToRefs(breeStore);
+const { connections, numActive, numDone, numDelayed, numWaiting, numError } =
+  storeToRefs(breeStore);
 
 /** debounce time (ms) */
 const debounce = 250;
@@ -63,6 +65,43 @@ function onFilter(value) {
 
 <template lang="pug">
 .w-100(v-if='breeStore.connections')
+  .row.mb-3.g-3
+    .col
+      StatsCard(
+        title='Total Active',
+        :value='numActive',
+        color='success',
+        icon='three-dots'
+      )
+    .col
+      StatsCard(
+        title='Total Done',
+        :value='numDone',
+        color='info',
+        icon='check'
+      )
+    .col
+      StatsCard(
+        title='Total Delayed',
+        :value='numDelayed',
+        color='warning',
+        icon='alarm'
+      )
+    .col
+      StatsCard(
+        title='Total Waiting',
+        :value='numWaiting',
+        color='warning',
+        icon='stopwatch'
+      )
+    .col
+      StatsCard(
+        title='Total Error',
+        :value='numError',
+        color='danger',
+        icon='x-lg'
+      )
+
   .row
     .col
       FilterFuzzy(

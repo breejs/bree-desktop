@@ -8,15 +8,104 @@ export const useBreeStore = defineStore({
   persist: true,
   state: () => ({
     /** @type {Connection[]} */
-    connections: [
-      /* {
-        name: 'localhost',
-        url: 'http://localhost:62893',
-        status: 'done'
-      } */
-    ]
+    connections: []
   }),
-  getters: {},
+  getters: {
+    /**
+     * get the number of "active" jobs
+     *
+     * @returns {number}
+     */
+    numActive(state) {
+      let count = 0;
+
+      for (const c of state.connections) {
+        for (const j of c.jobs) {
+          if (j.status === 'active') {
+            count++;
+          }
+        }
+      }
+
+      return count;
+    },
+
+    /**
+     * get the number of "done" jobs
+     *
+     * @returns {number}
+     */
+    numDone(state) {
+      let count = 0;
+
+      for (const c of state.connections) {
+        for (const j of c.jobs) {
+          if (j.status === 'done') {
+            count++;
+          }
+        }
+      }
+
+      return count;
+    },
+
+    /**
+     * get the number of "delayed" jobs
+     *
+     * @returns {number}
+     */
+    numDelayed(state) {
+      let count = 0;
+
+      for (const c of state.connections) {
+        for (const j of c.jobs) {
+          if (j.status === 'delayed') {
+            count++;
+          }
+        }
+      }
+
+      return count;
+    },
+
+    /**
+     * get the number of "waiting" jobs
+     *
+     * @returns {number}
+     */
+    numWaiting(state) {
+      let count = 0;
+
+      for (const c of state.connections) {
+        for (const j of c.jobs) {
+          if (j.status === 'waiting') {
+            count++;
+          }
+        }
+      }
+
+      return count;
+    },
+
+    /**
+     * get the number of "error" jobs
+     *
+     * @returns {number}
+     */
+    numError(state) {
+      let count = 0;
+
+      for (const c of state.connections) {
+        for (const j of c.jobs) {
+          if (j.status === 'error') {
+            count++;
+          }
+        }
+      }
+
+      return count;
+    }
+  },
   actions: {
     /**
      * setup all connections
