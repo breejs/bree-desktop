@@ -3,7 +3,6 @@ use tauri::{CustomMenuItem, Menu, MenuItem, Submenu};
 #[cfg(target_os = "macos")]
 use tauri::AboutMetadata;
 
-
 pub fn create_menu(#[allow(unused)] app_name: &str) -> Menu {
   let mut menu = Menu::new();
   #[cfg(target_os = "macos")]
@@ -62,13 +61,18 @@ pub fn create_menu(#[allow(unused)] app_name: &str) -> Menu {
   {
     menu = menu.add_submenu(Submenu::new("Edit", edit_menu));
   }
+
+  let mut view_menu = Menu::new();
+  view_menu = view_menu.add_item(
+    CustomMenuItem::new("reload".to_string(), "Reload")
+      .accelerator("CmdOrCtrl+R"),
+  );
+  view_menu = view_menu.add_native_item(MenuItem::Separator);
   #[cfg(target_os = "macos")]
   {
-    menu = menu.add_submenu(Submenu::new(
-      "View",
-      Menu::new().add_native_item(MenuItem::EnterFullScreen),
-    ));
+    view_menu = view_menu.add_native_item(MenuItem::EnterFullScreen);
   }
+  menu = menu.add_submenu(Submenu::new("View", view_menu));
 
   let mut window_menu = Menu::new();
   window_menu = window_menu.add_native_item(MenuItem::Minimize);

@@ -3,6 +3,10 @@
   windows_subsystem = "windows"
 )]
 
+#[cfg(target_os = "macos")]
+#[macro_use]
+extern crate objc;
+
 mod logger;
 mod menus;
 
@@ -21,6 +25,32 @@ fn main() {
         window
           .emit("show-new-connection", {})
           .expect("Failed to emit 'show-new-connection' event");
+      }
+      "reload" => {
+        // reload the app
+        let window = event.window();
+        window
+          .with_webview(|webview| {
+            #[cfg(target_os = "linux")]
+            {
+              // see https://docs.rs/webkit2gtk/latest/webkit2gtk/struct.WebView.html
+              // and https://docs.rs/webkit2gtk/latest/webkit2gtk/trait.WebViewExt.html
+              use webkit2gtk::traits::WebViewExt;
+              webview.inner().reload();
+            }
+
+            #[cfg(windows)]
+            unsafe {
+              // see https://docs.rs/webview2-com/0.17.0/webview2_com/Microsoft/Web/WebView2/Win32/struct.ICoreWebView2Controller.html
+              webview.controller().Reload().unwrap();
+            }
+
+            #[cfg(target_os = "macos")]
+            unsafe {
+              let () = msg_send![webview.inner(), reload];
+            }
+          })
+          .expect("Failed to reload app");
       }
       _ => {}
     })

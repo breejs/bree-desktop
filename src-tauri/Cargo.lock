@@ -61,6 +61,7 @@ dependencies = [
  "chrono",
  "fern",
  "log",
+ "objc",
  "parking_lot 0.12.1",
  "tauri",
  "tauri-build",
