@@ -36,7 +36,7 @@ const releaseData = {
       signature: '',
       url: ''
     },
-    'darwin-intel': {
+    'darwin-x86_64': {
       signature: '',
       url: ''
     },
@@ -64,25 +64,16 @@ const promises = latestRelease.assets.map(
       releaseData.platforms['windows-x86_64'].signature = sig;
     }
 
-    // darwin url (intel)
-    if (name.endsWith('.app.tar.gz') && !name.includes('aarch')) {
-      releaseData.platforms['darwin-intel'].url = browser_download_url;
-    }
-
-    // darwin signature (intel)
-    if (name.endsWith('.app.tar.gz.sig') && !name.includes('aarch')) {
-      const sig = await getSignature(browser_download_url);
-      releaseData.platforms['darwin-intel'].signature = sig;
-    }
-
-    // darwin url (aarch)
-    if (name.endsWith('aarch64.app.tar.gz')) {
+    // darwin url
+    if (name.endsWith('.app.tar.gz')) {
+      releaseData.platforms['darwin-x86_64'].url = browser_download_url;
       releaseData.platforms['darwin-aarch64'].url = browser_download_url;
     }
 
-    // darwin signature (aarch)
-    if (name.endsWith('aarch64.app.tar.gz.sig')) {
+    // darwin signature
+    if (name.endsWith('.app.tar.gz.sig')) {
       const sig = await getSignature(browser_download_url);
+      releaseData.platforms['darwin-x86_64'].signature = sig;
       releaseData.platforms['darwin-aarch64'].signature = sig;
     }
 
@@ -105,7 +96,7 @@ if (!releaseData.platforms['darwin-aarch64'].url) {
   console.error('Failed to get release for MacOS (aarch64)');
 }
 
-if (!releaseData.platforms['darwin-intel'].url) {
+if (!releaseData.platforms['darwin-x86_64'].url) {
   console.error('Failed to get release for MacOS (intel)');
 }
 
