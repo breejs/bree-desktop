@@ -1,4 +1,9 @@
-use tauri::{AboutMetadata, CustomMenuItem, Menu, MenuItem, Submenu};
+use tauri::{CustomMenuItem, Menu, MenuItem, Submenu};
+
+#[cfg(target_os = "macos")]
+{
+  use tauri::AboutMetadata
+}
 
 pub fn create_menu(#[allow(unused)] app_name: &str) -> Menu {
   let mut menu = Menu::new();
