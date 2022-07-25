@@ -126,7 +126,7 @@ export const useBreeStore = defineStore({
      * @returns {Promise<void>}
      */
     async addConnection({ name, url, token }) {
-      const connection = { name, url, token, status: 'waiting' };
+      const connection = { name, url, token, status: 'waiting', jobs: [] };
       this.connections.push(connection);
 
       return this.startSSE(connection);

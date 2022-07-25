@@ -1,7 +1,8 @@
 <script setup>
-import { watch, ref, computed } from 'vue';
-
+import { watch, ref, computed, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
+import Modal from 'bootstrap/js/dist/modal';
+
 import { useBreeStore } from '@/stores/bree';
 import ConnectionList from '@/components/jobs/connection-list.vue';
 import JobList from '@/components/jobs/job-list.vue';
@@ -61,6 +62,14 @@ function selector(val) {
 function onFilter(value) {
   filteredList.value = value.map((v) => jobList.value[v.index]);
 }
+
+onMounted(() => {
+  if (connections.value.length === 0) {
+    const modal = Modal.getOrCreateInstance('#add-connection-modal');
+
+    modal.show();
+  }
+});
 </script>
 
 <template lang="pug">
