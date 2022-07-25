@@ -8,7 +8,15 @@ export const useBreeStore = defineStore({
   persist: true,
   state: () => ({
     /** @type {Connection[]} */
-    connections: []
+    connections: [
+      {
+        name: 'localhost',
+        url: 'http://localhost:62893',
+        jobs: [],
+        status: 'waiting',
+        token: ''
+      }
+    ]
   }),
   getters: {
     /**
