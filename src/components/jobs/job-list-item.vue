@@ -104,6 +104,13 @@ li.list-group-item
         .col
           small.text-muted= '{{ lastRun }}'
     .col.col-auto(v-show='hover')
+      span(v-tooltip:title='"View Config"')
+        button.btn.btn-outline-info.me-1(
+          v-if='kind === "connection"',
+          data-bs-toggle='modal',
+          :data-bs-target='"#config-modal-" + job.name'
+        )
+          i.bi.bi-gear-fill
       button.btn.btn-outline-info.me-1(
         v-if='openFile && allowEdit && kind === "job" && job.path',
         v-tooltip:title='"Edit"',

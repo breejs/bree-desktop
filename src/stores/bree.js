@@ -180,6 +180,28 @@ export const useBreeStore = defineStore({
     },
 
     /**
+     * get configs for a connection
+     *
+     * @param {string} name - connection name
+     *
+     * @returns {Promise<BreeConfig>}
+     */
+    async getConfig(name) {
+      const loading = useLoadingStore();
+
+      loading.add(name);
+      const connection = getConnectionFromName(this.connections, name);
+
+      const res = await request.get(`${connection.url}/v1/config`);
+
+      connection.config = res.body;
+
+      loading.remove(name);
+
+      return res.body;
+    },
+
+    /**
      * restrart job or connection
      *
      * @param {string} connectionName
@@ -342,6 +364,7 @@ export const useBreeStore = defineStore({
 
     /**
      * start SSE for a connection
+     *
      * @param {Connection} connection
      *
      * @returns {Promise<void>}
