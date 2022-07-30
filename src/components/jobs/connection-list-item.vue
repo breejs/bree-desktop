@@ -16,7 +16,8 @@ const props = defineProps({
 const job = computed(() => ({
   name: props.connection.name,
   lastRun: props.connection.lastPing,
-  status: props.connection.status
+  status: props.connection.status,
+  eventSource: props.connection.eventSource
 }));
 
 const allowEdit = computed(() => {

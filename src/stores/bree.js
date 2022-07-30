@@ -422,6 +422,21 @@ export const useBreeStore = defineStore({
           console.error(`Job "${data}" does not exist`);
         }
       });
+    },
+
+    /**
+     * stop SSE
+     *
+     * @param {string} name - connection name
+     *
+     * @returns {void}
+     */
+    stopSSE(name) {
+      const connection = getConnectionFromName(this.connections, name);
+
+      if (connection.eventSource) {
+        connection.eventSource.close();
+      }
     }
   }
 });

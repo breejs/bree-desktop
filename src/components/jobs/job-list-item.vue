@@ -7,7 +7,14 @@ import LoadingSpinner from '../loading-spinner.vue';
 import JobStatus from './job-status.vue';
 import ConnectionStatus from './connection-status.vue';
 
-import { breeRestart, breeStop, breeStart, removeConnection } from '@/symbols';
+import {
+  breeRestart,
+  breeStop,
+  breeStart,
+  removeConnection,
+  startSSE,
+  stopSSE
+} from '@/symbols';
 import ls from '@/local-storage';
 import useTauriOpenFile from '@/composables/tauri-open-file';
 
@@ -56,6 +63,8 @@ const restart = inject(breeRestart);
 const stop = inject(breeStop);
 const start = inject(breeStart);
 const remove = inject(removeConnection);
+const startConnection = inject(startSSE);
+const pauseConnection = inject(stopSSE);
 
 function onToggleClick() {
   const toggleObj = ls.get('toggleMap') || {};
@@ -100,6 +109,15 @@ li.list-group-item
               LoadingSpinner(
                 :name='kind === "connection" ? job.name : job.hash'
               )
+            template(v-if='kind === "connection"')
+              span.text-danger.ms-3(v-if='job.eventSource?.readyState === 0')
+                | Attempting to connect...
+                i.bi.bi-pause-btn.pointer.ms-1(
+                  @click='pauseConnection(job.name)'
+                )
+              span.text-warning.ms-3(v-if='job.eventSource?.readyState === 2')
+                | Paused connection...
+                i.bi.bi-play-btn.pointer.ms-1(@click='startConnection(job)')
       .row
         .col
           small.text-muted= '{{ lastRun }}'
