@@ -65,6 +65,7 @@ dependencies = [
  "parking_lot 0.12.1",
  "tauri",
  "tauri-build",
+ "webkit2gtk",
 ]
 
 [[package]]

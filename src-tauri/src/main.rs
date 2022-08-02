@@ -36,13 +36,14 @@ fn main() {
               // see https://docs.rs/webkit2gtk/latest/webkit2gtk/struct.WebView.html
               // and https://docs.rs/webkit2gtk/latest/webkit2gtk/trait.WebViewExt.html
               use webkit2gtk::traits::WebViewExt;
+              use webkit2gtk::auto::web_view::WebViewExt;
               webview.inner().reload();
             }
 
             #[cfg(windows)]
             unsafe {
               // see https://docs.rs/webview2-com/0.17.0/webview2_com/Microsoft/Web/WebView2/Win32/struct.ICoreWebView2Controller.html
-              webview.controller().Reload().unwrap();
+              webview.controller().CoreWebView2().unwrap().Reload().unwrap();
             }
 
             #[cfg(target_os = "macos")]
