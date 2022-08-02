@@ -36,7 +36,6 @@ fn main() {
               // see https://docs.rs/webkit2gtk/latest/webkit2gtk/struct.WebView.html
               // and https://docs.rs/webkit2gtk/latest/webkit2gtk/trait.WebViewExt.html
               use webkit2gtk::traits::WebViewExt;
-              use webkit2gtk::auto::web_view::WebViewExt;
               webview.inner().reload();
             }
 

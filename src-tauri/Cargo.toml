@@ -24,7 +24,9 @@ parking_lot = "0.12.1"
 tauri = { version = "1.0.4", features = ["shell-open", "updater"] }
 
 [target.'cfg(target_os = "linux")'.dependencies]
-webkit2gtk = "0.18.0"
+# got from below
+# https://github.com/tauri-apps/tauri/blob/v1.0.5/core/tauri/Cargo.toml#L100
+webkit2gtk = { version = "0.18.0", features = ["v2_22"] }
 
 [features]
 # by default Tauri runs in production mode
