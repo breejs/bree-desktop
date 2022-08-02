@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import omit from 'lodash/omit';
 
 import { useBreeStore } from '@/stores/bree';
@@ -27,6 +27,8 @@ const props = defineProps({
   }
 });
 
+const modal = ref(null);
+
 const breeStore = useBreeStore();
 
 const breeConfig = computed(() =>
@@ -41,12 +43,19 @@ const breeConfig = computed(() =>
 );
 
 onMounted(() => {
-  breeStore.getConfig(props.name);
+  modal.value.addEventListener('show.bs.modal', () => {
+    breeStore.getConfig(props.name);
+  });
 });
 </script>
 
 <template lang="pug">
-.modal.fade(:id='"config-modal-" + name', tabindex='-1', role='dialog')
+.modal.fade(
+  ref='modal',
+  :id='"config-modal-" + name',
+  tabindex='-1',
+  role='dialog'
+)
   .modal-dialog.modal-xl
     .modal-content
       .modal-header

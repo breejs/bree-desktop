@@ -13,6 +13,7 @@ export const useBreeStore = defineStore({
         name: 'localhost',
         url: 'http://localhost:62893',
         jobs: [],
+        logs: [],
         status: 'waiting',
         token: ''
       }
@@ -112,6 +113,31 @@ export const useBreeStore = defineStore({
       }
 
       return count;
+    },
+
+    /**
+     * get logs for a job or connection
+     *
+     * @returns {LogsGetterCallback} - logs getter callback
+     */
+    logs(state) {
+      const loading = useLoadingStore();
+      const { connections } = state;
+
+      return (connectionName, jobName) => {
+        loading.add(`logs:${connectionName}${jobName ? ':' + jobName : ''}`);
+        const connection = getConnectionFromName(connections, connectionName);
+        let res = [];
+
+        if (connection) {
+          res = jobName
+            ? connection.logs.filter((l) => l.name === jobName)
+            : connection.logs;
+        }
+
+        loading.remove(`logs:${connectionName}${jobName ? ':' + jobName : ''}`);
+        return res;
+      };
     }
   },
   actions: {
@@ -134,7 +160,14 @@ export const useBreeStore = defineStore({
      * @returns {Promise<void>}
      */
     async addConnection({ name, url, token }) {
-      const connection = { name, url, token, status: 'waiting', jobs: [] };
+      const connection = {
+        name,
+        url,
+        token,
+        status: 'waiting',
+        jobs: [],
+        logs: []
+      };
       this.connections.push(connection);
 
       return this.startSSE(connection);
@@ -403,6 +436,12 @@ export const useBreeStore = defineStore({
       });
 
       es.addEventListener('worker created', ({ data }) => {
+        connection.logs.push({
+          type: 'worker created',
+          name: data,
+          date: new Date()
+        });
+
         const job = getJobFromName(connection, data);
 
         if (job) {
@@ -414,6 +453,12 @@ export const useBreeStore = defineStore({
       });
 
       es.addEventListener('worker deleted', ({ data }) => {
+        connection.logs.push({
+          type: 'worker deleted',
+          name: data,
+          date: new Date()
+        });
+
         const job = getJobFromName(connection, data);
 
         if (job) {
@@ -421,6 +466,28 @@ export const useBreeStore = defineStore({
         } else {
           console.error(`Job "${data}" does not exist`);
         }
+      });
+
+      es.addEventListener('worker message', ({ data }) => {
+        data = JSON.parse(data);
+
+        connection.logs.push({
+          type: 'worker message',
+          name: data.name,
+          date: new Date(),
+          message: data.message
+        });
+      });
+
+      es.addEventListener('worker error', ({ data }) => {
+        data = JSON.parse(data);
+
+        connection.logs.push({
+          type: 'worker error',
+          name: data.name,
+          date: new Date(),
+          message: data.error
+        });
       });
     },
 
@@ -437,6 +504,25 @@ export const useBreeStore = defineStore({
       if (connection.eventSource) {
         connection.eventSource.close();
       }
+    },
+
+    /**
+     * clear logs
+     *
+     * @param {string} connectionName - connection name
+     * @param {?string} jobName - job name
+     *
+     * @returns {void}
+     */
+    clearLogs(connectionName, jobName) {
+      const connection = getConnectionFromName(
+        this.connections,
+        connectionName
+      );
+
+      connection.logs = jobName
+        ? connection.logs.filter((l) => l.name !== jobName)
+        : [];
     }
   }
 });
@@ -499,4 +585,14 @@ export function getJobHash(connectionName, jobName) {
  * @property {EventSource} [eventSource]
  * @property {Date} [lastPing]
  * @property {Job[]} jobs
+ * @property {Log[]} logs
+ */
+
+/**
+ * @callback LogsGetterCallback
+ *
+ * @param {string} connectionName - connection name
+ * @param {string} jobName - job name
+ *
+ * @returns {Log[]} - logs
  */

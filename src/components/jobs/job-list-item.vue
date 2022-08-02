@@ -56,6 +56,11 @@ const lastRun = computed(() => {
   return `Last ${run}: ${date}`;
 });
 const toggle = ref(Boolean(ls.get('toggleMap')?.[props.job.name]) || false);
+const logsModalId = computed(() => {
+  return `#logs-modal-${props.kind === 'connection' ? 'connection-' : ''}${
+    props.job.name
+  }`;
+});
 
 const openFile = useTauriOpenFile();
 
@@ -129,6 +134,12 @@ li.list-group-item
           :data-bs-target='"#config-modal-" + job.name'
         )
           i.bi.bi-gear-fill
+      span(v-tooltip:title='"View Logs"')
+        button.btn.btn-outline-info.me-1(
+          data-bs-toggle='modal',
+          :data-bs-target='logsModalId'
+        )
+          i.bi.bi-terminal-fill
       button.btn.btn-outline-info.me-1(
         v-if='openFile && allowEdit && kind === "job" && job.path',
         v-tooltip:title='"Edit"',

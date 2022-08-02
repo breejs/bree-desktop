@@ -1149,10 +1149,10 @@
   resolved "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@breejs/api@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/@breejs/api/-/api-2.0.0.tgz#4c8154c3ed96ddd4294ef683722d51c1f0b22c4f"
-  integrity sha512-Nf/Ot153pXGZ0nJtRoaKI/DNd3IOlP4gCfhQJKMKGeZKcp347LM5YTFNVBAEFX4kQ/YiaKK0+MbF14r409zVBA==
+"@breejs/api@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.npmjs.org/@breejs/api/-/api-2.1.0.tgz#85173dc83c5011bec13f01a3d2c9fee4ba15bec4"
+  integrity sha512-X/WIfdD2Dfh/KNsL4e2XKWKHUOQfLkjcwOdFjIx1sUPzCQwIwSNujBx2d2SQqNTNDNN2e5+7aiDAO5G52uic/w==
   dependencies:
     "@hapi/boom" "^10.0.0"
     "@koa/router" "^10.0.0"

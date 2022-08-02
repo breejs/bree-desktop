@@ -45,6 +45,7 @@ function onFilter(value) {
     .col
       JobList(
         :jobs='filteredList.length > 0 ? filteredList : conn.jobs',
+        :connectionName='conn.name',
         @start='breeStore.start(conn.name, $event.name)',
         @stop='breeStore.stop(conn.name, $event.name)',
         @restart='breeStore.restart(conn.name, $event.name)'

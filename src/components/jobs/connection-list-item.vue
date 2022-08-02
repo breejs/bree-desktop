@@ -39,6 +39,7 @@ const start = inject(breeStart);
 JobListItem(:kind='"connection"', :job='job')
   JobList(
     :jobs='connection.jobs',
+    :connectionName='connection.name',
     :allowEdit='allowEdit',
     @start='start(connection.name, $event.name)',
     @stop='stop(connection.name, $event.name)',
