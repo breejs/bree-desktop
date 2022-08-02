@@ -1,7 +1,33 @@
 // Vitest Snapshot v1
 
 exports[`story snapshots > Jobs 1`] = `
-"<ul class=\\"list-group list-group-flush pe-0\\">
+"<div class=\\"modal fade\\" id=\\"logs-modal-connection-undefined\\" tabindex=\\"-1\\" role=\\"dialog\\">
+  <div class=\\"modal-dialog modal-xl\\">
+    <div class=\\"modal-content\\">
+      <div class=\\"modal-header\\">
+        <h5 class=\\"modal-title\\">Logs for \\"\\"</h5><button class=\\"btn btn-danger btn-sm ms-1\\">Clear logs</button>
+        <!--v-if--><button class=\\"btn btn-close\\" type=\\"button\\" data-bs-dismiss=\\"modal\\" aria-label=\\"Close\\"></button>
+      </div>
+      <div class=\\"modal-body\\">
+        <ul class=\\"list-group list-group-flush\\">No logs</ul>
+      </div>
+    </div>
+  </div>
+</div>
+<ul class=\\"list-group list-group-flush pe-0\\">
+  <div class=\\"modal fade\\" id=\\"logs-modal-Waiting Job\\" tabindex=\\"-1\\" role=\\"dialog\\">
+    <div class=\\"modal-dialog modal-xl\\">
+      <div class=\\"modal-content\\">
+        <div class=\\"modal-header\\">
+          <h5 class=\\"modal-title\\">Logs for \\"Waiting Job\\"</h5><button class=\\"btn btn-danger btn-sm ms-1\\">Clear logs</button>
+          <!--v-if--><button class=\\"btn btn-close\\" type=\\"button\\" data-bs-dismiss=\\"modal\\" aria-label=\\"Close\\"></button>
+        </div>
+        <div class=\\"modal-body\\">
+          <ul class=\\"list-group list-group-flush\\">No logs</ul>
+        </div>
+      </div>
+    </div>
+  </div>
   <li class=\\"list-group-item\\">
     <div class=\\"row align-items-center\\">
       <!--v-if-->
@@ -12,13 +38,14 @@ exports[`story snapshots > Jobs 1`] = `
         <div class=\\"row\\">
           <div class=\\"col\\"><small>Waiting Job
               <!--v-if--><span class=\\"ms-3\\"><!--v-if--></span>
+              <!--v-if-->
             </small></div>
         </div>
         <div class=\\"row\\">
           <div class=\\"col\\"><small class=\\"text-muted\\">Last Run: 4 months ago</small></div>
         </div>
       </div>
-      <div class=\\"col col-auto\\" style=\\"display: none;\\">
+      <div class=\\"col col-auto\\" style=\\"display: none;\\"><span data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"View Config\\" aria-label=\\"View Config\\"><!--v-if--></span><span data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"View Logs\\" aria-label=\\"View Logs\\"><button class=\\"btn btn-outline-info me-1\\" data-bs-toggle=\\"modal\\" data-bs-target=\\"#logs-modal-Waiting Job\\"><i class=\\"bi bi-terminal-fill\\"></i></button></span>
         <!--v-if--><button class=\\"btn btn-outline-danger me-1\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Stop\\" aria-label=\\"Stop\\"><i class=\\"bi bi-stop-fill\\"></i></button>
         <!--v-if--><button class=\\"btn btn-outline-warning me-1\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Restart\\" aria-label=\\"Restart\\"><i class=\\"bi bi-arrow-clockwise\\"></i></button>
         <!--v-if-->
@@ -26,6 +53,19 @@ exports[`story snapshots > Jobs 1`] = `
     </div>
     <!--v-if-->
   </li>
+  <div class=\\"modal fade\\" id=\\"logs-modal-Stopped Job\\" tabindex=\\"-1\\" role=\\"dialog\\">
+    <div class=\\"modal-dialog modal-xl\\">
+      <div class=\\"modal-content\\">
+        <div class=\\"modal-header\\">
+          <h5 class=\\"modal-title\\">Logs for \\"Stopped Job\\"</h5><button class=\\"btn btn-danger btn-sm ms-1\\">Clear logs</button>
+          <!--v-if--><button class=\\"btn btn-close\\" type=\\"button\\" data-bs-dismiss=\\"modal\\" aria-label=\\"Close\\"></button>
+        </div>
+        <div class=\\"modal-body\\">
+          <ul class=\\"list-group list-group-flush\\">No logs</ul>
+        </div>
+      </div>
+    </div>
+  </div>
   <li class=\\"list-group-item\\">
     <div class=\\"row align-items-center\\">
       <!--v-if-->
@@ -36,13 +76,14 @@ exports[`story snapshots > Jobs 1`] = `
         <div class=\\"row\\">
           <div class=\\"col\\"><small>Stopped Job
               <!--v-if--><span class=\\"ms-3\\"><!--v-if--></span>
+              <!--v-if-->
             </small></div>
         </div>
         <div class=\\"row\\">
           <div class=\\"col\\"><small class=\\"text-muted\\">Last Run: 4 months ago</small></div>
         </div>
       </div>
-      <div class=\\"col col-auto\\" style=\\"display: none;\\">
+      <div class=\\"col col-auto\\" style=\\"display: none;\\"><span data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"View Config\\" aria-label=\\"View Config\\"><!--v-if--></span><span data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"View Logs\\" aria-label=\\"View Logs\\"><button class=\\"btn btn-outline-info me-1\\" data-bs-toggle=\\"modal\\" data-bs-target=\\"#logs-modal-Stopped Job\\"><i class=\\"bi bi-terminal-fill\\"></i></button></span>
         <!--v-if-->
         <!--v-if--><button class=\\"btn btn-outline-success me-1\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Start\\" aria-label=\\"Start\\"><i class=\\"bi bi-play-fill\\"></i></button><button class=\\"btn btn-outline-warning me-1\\" disabled=\\"\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Restart\\" aria-label=\\"Restart\\"><i class=\\"bi bi-arrow-clockwise\\"></i></button>
         <!--v-if-->
@@ -50,6 +91,19 @@ exports[`story snapshots > Jobs 1`] = `
     </div>
     <!--v-if-->
   </li>
+  <div class=\\"modal fade\\" id=\\"logs-modal-Errored Job\\" tabindex=\\"-1\\" role=\\"dialog\\">
+    <div class=\\"modal-dialog modal-xl\\">
+      <div class=\\"modal-content\\">
+        <div class=\\"modal-header\\">
+          <h5 class=\\"modal-title\\">Logs for \\"Errored Job\\"</h5><button class=\\"btn btn-danger btn-sm ms-1\\">Clear logs</button>
+          <!--v-if--><button class=\\"btn btn-close\\" type=\\"button\\" data-bs-dismiss=\\"modal\\" aria-label=\\"Close\\"></button>
+        </div>
+        <div class=\\"modal-body\\">
+          <ul class=\\"list-group list-group-flush\\">No logs</ul>
+        </div>
+      </div>
+    </div>
+  </div>
   <li class=\\"list-group-item\\">
     <div class=\\"row align-items-center\\">
       <!--v-if-->
@@ -60,13 +114,14 @@ exports[`story snapshots > Jobs 1`] = `
         <div class=\\"row\\">
           <div class=\\"col\\"><small>Errored Job
               <!--v-if--><span class=\\"ms-3\\"><!--v-if--></span>
+              <!--v-if-->
             </small></div>
         </div>
         <div class=\\"row\\">
           <div class=\\"col\\"><small class=\\"text-muted\\">Last Run: Never</small></div>
         </div>
       </div>
-      <div class=\\"col col-auto\\" style=\\"display: none;\\">
+      <div class=\\"col col-auto\\" style=\\"display: none;\\"><span data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"View Config\\" aria-label=\\"View Config\\"><!--v-if--></span><span data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"View Logs\\" aria-label=\\"View Logs\\"><button class=\\"btn btn-outline-info me-1\\" data-bs-toggle=\\"modal\\" data-bs-target=\\"#logs-modal-Errored Job\\"><i class=\\"bi bi-terminal-fill\\"></i></button></span>
         <!--v-if-->
         <!--v-if--><button class=\\"btn btn-outline-success me-1\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Start\\" aria-label=\\"Start\\"><i class=\\"bi bi-play-fill\\"></i></button><button class=\\"btn btn-outline-warning me-1\\" disabled=\\"\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Restart\\" aria-label=\\"Restart\\"><i class=\\"bi bi-arrow-clockwise\\"></i></button>
         <!--v-if-->
@@ -74,6 +129,19 @@ exports[`story snapshots > Jobs 1`] = `
     </div>
     <!--v-if-->
   </li>
+  <div class=\\"modal fade\\" id=\\"logs-modal-Running Job\\" tabindex=\\"-1\\" role=\\"dialog\\">
+    <div class=\\"modal-dialog modal-xl\\">
+      <div class=\\"modal-content\\">
+        <div class=\\"modal-header\\">
+          <h5 class=\\"modal-title\\">Logs for \\"Running Job\\"</h5><button class=\\"btn btn-danger btn-sm ms-1\\">Clear logs</button>
+          <!--v-if--><button class=\\"btn btn-close\\" type=\\"button\\" data-bs-dismiss=\\"modal\\" aria-label=\\"Close\\"></button>
+        </div>
+        <div class=\\"modal-body\\">
+          <ul class=\\"list-group list-group-flush\\">No logs</ul>
+        </div>
+      </div>
+    </div>
+  </div>
   <li class=\\"list-group-item\\">
     <div class=\\"row align-items-center\\">
       <!--v-if-->
@@ -84,13 +152,14 @@ exports[`story snapshots > Jobs 1`] = `
         <div class=\\"row\\">
           <div class=\\"col\\"><small>Running Job
               <!--v-if--><span class=\\"ms-3\\"><!--v-if--></span>
+              <!--v-if-->
             </small></div>
         </div>
         <div class=\\"row\\">
           <div class=\\"col\\"><small class=\\"text-muted\\">Last Run: 4 months ago</small></div>
         </div>
       </div>
-      <div class=\\"col col-auto\\" style=\\"display: none;\\">
+      <div class=\\"col col-auto\\" style=\\"display: none;\\"><span data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"View Config\\" aria-label=\\"View Config\\"><!--v-if--></span><span data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"View Logs\\" aria-label=\\"View Logs\\"><button class=\\"btn btn-outline-info me-1\\" data-bs-toggle=\\"modal\\" data-bs-target=\\"#logs-modal-Running Job\\"><i class=\\"bi bi-terminal-fill\\"></i></button></span>
         <!--v-if--><button class=\\"btn btn-outline-danger me-1\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Stop\\" aria-label=\\"Stop\\"><i class=\\"bi bi-stop-fill\\"></i></button>
         <!--v-if--><button class=\\"btn btn-outline-warning me-1\\" data-bs-toggle=\\"tooltip\\" data-bs-placement=\\"bottom\\" title=\\"\\" data-bs-original-title=\\"Restart\\" aria-label=\\"Restart\\"><i class=\\"bi bi-arrow-clockwise\\"></i></button>
         <!--v-if-->
@@ -102,7 +171,20 @@ exports[`story snapshots > Jobs 1`] = `
 `;
 
 exports[`story snapshots > NoJobs 1`] = `
-"<ul class=\\"list-group list-group-flush pe-0\\">
+"<div class=\\"modal fade\\" id=\\"logs-modal-connection-undefined\\" tabindex=\\"-1\\" role=\\"dialog\\">
+  <div class=\\"modal-dialog modal-xl\\">
+    <div class=\\"modal-content\\">
+      <div class=\\"modal-header\\">
+        <h5 class=\\"modal-title\\">Logs for \\"\\"</h5><button class=\\"btn btn-danger btn-sm ms-1\\">Clear logs</button>
+        <!--v-if--><button class=\\"btn btn-close\\" type=\\"button\\" data-bs-dismiss=\\"modal\\" aria-label=\\"Close\\"></button>
+      </div>
+      <div class=\\"modal-body\\">
+        <ul class=\\"list-group list-group-flush\\">No logs</ul>
+      </div>
+    </div>
+  </div>
+</div>
+<ul class=\\"list-group list-group-flush pe-0\\">
   <li class=\\"list-group-item\\">No jobs</li>
 </ul>"
 `;
